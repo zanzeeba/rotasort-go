@@ -1,14 +1,11 @@
 package main
 
 import (
-	"bytes"
 	"database/sql"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"

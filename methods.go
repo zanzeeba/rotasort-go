@@ -2,22 +2,12 @@ package main
 
 import (
 	"bytes"
-	"database/sql"
 	"fmt"
-	"log"
 	"net/http"
-	"os"
-	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
-	"github.com/russross/blackfriday"
-)
-
-var (
-	repeat int
-	db     *sql.DB
 )
 
 func repeatHandler(c *gin.Context) {
