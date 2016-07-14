@@ -55,7 +55,9 @@ func main() {
 
 	router.GET("/db", dbFunc)
 
-	router.GET("/test", getTest)
+	router.GET("/test", func(c *gin.Context) {
+
+	}, getTest)
 
 	router.Run(":" + port)
 }
