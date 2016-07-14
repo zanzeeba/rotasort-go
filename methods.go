@@ -59,10 +59,10 @@ func getTest(c *gin.Context) {
 	//		err  error
 	)
 	fmt.Println(".............................")
-	fmt.Println(c.Param("taskId"))
+	fmt.Println(c.Query("taskId"))
 	fmt.Println(".............................")
-	t.ID = c.Param("taskId")
-	t.TaskName = c.Param("taskName")
+	t.ID = c.Query("taskId")
+	t.TaskName = c.Query("taskName")
 
 	//
 	//	if err := scanParams(c, "task", &clientID); err != nil {
