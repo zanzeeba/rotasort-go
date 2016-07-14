@@ -10,6 +10,12 @@ var (
 	ErrEmptyName = errors.New("name not set")
 )
 
+// Shift contains job tree hierarchy.
+type Task struct {
+	ID       string `json:"id"`
+	TaskName string `json:"taskName"`
+}
+
 // BusinessUnitJob contains display name attributes.
 type BusinessUnitJob struct {
 	ID          int64  `json:"id"`

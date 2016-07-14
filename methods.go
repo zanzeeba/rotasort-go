@@ -54,12 +54,13 @@ func dbFunc(c *gin.Context) {
 func getTest(c *gin.Context) {
 
 	var (
-	//		task string
-	//		j    *jobs.Job
+		//		task string
+		t Task
 	//		err  error
 	)
 
-	taskId := c.Param("taskId")
+	t.ID = c.Param("taskId")
+	t.TaskName = c.Param("taskName")
 
 	//
 	//	if err := scanParams(c, "task", &clientID); err != nil {
@@ -78,5 +79,5 @@ func getTest(c *gin.Context) {
 	//		return
 	//	}
 
-	c.JSON(http.StatusOK, taskId)
+	c.JSON(http.StatusOK, t)
 }
