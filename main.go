@@ -32,6 +32,7 @@ func main() {
 		repeat = 5
 	}
 
+	// this is opening the db connection
 	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		log.Fatalf("Error opening database: %q", err)
@@ -53,6 +54,8 @@ func main() {
 	router.GET("/repeat", repeatHandler)
 
 	router.GET("/db", dbFunc)
+
+	router.GET("/test", getTest)
 
 	router.Run(":" + port)
 }

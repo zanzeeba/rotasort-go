@@ -1,0 +1,164 @@
+FORMAT: 1A
+HOST: http://jobs.etips.depoel.co.uk
+
+# Job service [/v1/jobs]
+
+Service provides CRUD for job tree hierarchy.
+
+## Job Service [/v1/jobs{buID}]
+
++ Parameters - one or more of the following query parameters
+    + buID: 1 (number, optional) - ID of the Business Unit
+
+### Retrieve a List of Jobs [GET]
+Returns a list of Jobs.
+
++ Request (application/json)
++ Response 200 (application/json)
+    + Attributes (array)
+        + (JobLookup)
+        - (JobLookup)
+           + id: 2
+           + name: Nurse in Charge
+           + displayName: `Nurse in Charge (#2)`
+
+## Root Job [/v1/jobs/{clientId}]
+
++ Parameters
+    + clientId: 1 (number, required) - ID of the client
+
+### Retrieve a root Job [GET]
+
+Returns a root Job with all children.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Job)
+        + name: Root
+        + children (array)
+            + (Job)
+                + id: 100 (number)
+                + name: Nurse
+                + children (array)
+                    + (Job)
+                        + id: 101 (number)
+                        + name: Nurse A
+                    + (Job)
+                        + id: 102 (number)
+                        + name: Nurse B
+            - (Job)
+                + id: 200 (number)
+                + name: Receptionist
+
+### Create a root Job [POST]
+
++ Request Creates a root Job (application/json)
+    + Attributes (NewJob)
+        + name: Root
+
++ Response 201 (application/json)
+    + Attributes (Job)
+        + name: Root
+
++ Request A root job already exists (application/json)
+    + Attributes (NewJob)
+        + name: Root
+
++ Response 409 (application/json)
+
+
+## Child Jobs [/v1/jobs/{clientId}/{id}/children]
+
++ Parameters
+    + clientId: 1 (number, required) - ID of the client
+    + id: 1 (number, required) - parent job ID
+
+### Create one or more child Jobs [POST]
+
++ Request (application/json)
+    + Attributes (array)
+        + (NewJob)
+            + name: Nurse A
+        + (NewJob)
+            + name: Nurse B
+
++ Response 201 (application/json)
+    + Attributes (array)
+        + (Job)
+            + id: 101 (number)
+            + name: Nurse A
+        + (Job)
+            + id: 102 (number)
+            + name: Nurse B
+
+
+## Job [/v1/jobs/{clientId}/{id}]
+
++ Parameters
+    + clientId: 1 (number, required) - ID of the client
+    + id: 1 (number, required) - job ID
+
+
+### Get a single job [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    + Attributes (Job)
+
+### Update a Job [PUT]
+
++ Request (application/json)
+    + Attributes (Job)
+
++ Response 200 (application/json)
+    + Attributes (Job)
+
+### Delete a Job [DELETE]
+
+Not implemented.
+
++ Request (application/json)
++ Response 501 (application/json)
+
+## Nominal code structures [/v1/jobs/{clientId}/nominal/structures]
+
++ Parameters
+    + clientId: 4274 (number, required) - The client id to retrieve the nominal structures for.
+
+### Nominal codes [GET]
+
+Get a list of nominal code structures for a client
+
++ Response 200 (application/json)
+    + Attributes (array)
+        + (NominalStructure)
+
+# Data Structures
+
+## NewJob (object)
+- name: Root (string, required)
+- categoryCode: 400
+- goldStandard: 1 (number, optional)
+- agencyFee: 0 (number, optional)
+- costSavingsDepoelShare: 0 (number, optional)
+- potentialVATExemption: true (boolean, optional) DEPRECATED. Replaced with potentialVATExemptionStatus
+- potentialVATExemptionStatus (enum) NOT IMPLEMENTED. E5-731
+    - 0 (number) not exempt
+    - 1 (number) exempt
+    - 2 (number) agency decides
+
+## Job (NewJob)
+- id: 1 (number, required)
+- children (array, optional)
+
+## JobLookup
+- id: 1 (number, required)
+- name: Clinical Receptionist (required)
+- displayName: `Clinical Receptionist (#1)` (required)
+
+## NominalStructure
+- jobId: 2323 (number, required)
+- businessUnitId: 50000 (number, required)
+- format: `{bucode}.5570.100.UK0` (required)

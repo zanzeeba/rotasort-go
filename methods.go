@@ -49,3 +49,32 @@ func dbFunc(c *gin.Context) {
 		c.String(http.StatusOK, fmt.Sprintf("Read from DB: %s\n", tick.String()))
 	}
 }
+
+// to test a get
+func getTest(c *gin.Context) {
+
+	var (
+		//		task string
+		j string
+	//		j    *jobs.Job
+	//		err  error
+	)
+	//
+	//	if err := scanParams(c, "task", &clientID); err != nil {
+	//		c.AbortWithError(http.StatusBadRequest, err)
+	//		return
+	//	}
+	//
+	//	if j, err = dbSelectJobs(clientID); err != nil {
+	//		c.AbortWithError(http.StatusServiceUnavailable, err)
+	//		return
+	//	}
+	//
+	//	if j == nil {
+	//		logInfof("no jobs found for %s", clientID)
+	//		c.AbortWithStatus(http.StatusNotFound)
+	//		return
+	//	}
+
+	c.JSON(http.StatusOK, j)
+}
