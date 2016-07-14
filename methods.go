@@ -58,7 +58,7 @@ func getTest(c *gin.Context) {
 		t Task
 	//		err  error
 	)
-
+	fmt.Println(c.Param("taskId"))
 	t.ID = c.Param("taskId")
 	t.TaskName = c.Param("taskName")
 
