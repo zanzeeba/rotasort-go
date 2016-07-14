@@ -12,7 +12,7 @@ var (
 
 // Shift contains job tree hierarchy.
 type Task struct {
-	ID       string `json:"id"`
+	ID       string `json:"taskId"`
 	TaskName string `json:"taskName"`
 }
 
