@@ -57,5 +57,13 @@ func main() {
 
 	router.GET("/test", getTest)
 
+	router.GET("/staff", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "staff.tmpl.html", nil)
+	})
+
+	router.GET("/tasks", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "tasks.tmpl.html", nil)
+	})
+
 	router.Run(":" + port)
 }
