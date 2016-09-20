@@ -37,3 +37,7 @@ or
 For more information about using Go on Heroku, see these Dev Center articles:
 
 - [Go on Heroku](https://devcenter.heroku.com/categories/go)
+
+
+## morning-reaches-36625
+/go/github.com/heroku/go-getting-started

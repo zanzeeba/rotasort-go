@@ -83,3 +83,14 @@ func getTest(c *gin.Context) {
 
 	c.JSON(http.StatusOK, t)
 }
+
+// to test a template invoke
+func getTemplTest(c *gin.Context) {
+	fmt.Println(".............................")
+	fmt.Println("template test")
+	fmt.Println(".............................")
+
+	c.HTML(http.StatusOK, "templtest.tmpl", gin.H{
+		"title": "Main website",
+	})
+}
