@@ -90,7 +90,7 @@ func getTemplTest(c *gin.Context) {
 	fmt.Println("template test")
 	fmt.Println(".............................")
 
-	c.HTML(http.StatusOK, "templtest.tmpl", gin.H{
+	c.HTML(http.StatusOK, "templtest.tmpl.html", gin.H{
 		"title": "Main website",
 	})
 }
