@@ -3,19 +3,22 @@ DROP TYPE IF EXISTS DAY_OF_WEEK CASCADE;
 DROP TYPE IF EXISTS TEMPLATE CASCADE;
 DROP TYPE IF EXISTS HOURS CASCADE;
 DROP TYPE IF EXISTS MINUTES CASCADE;
+DROP TYPE IF EXISTS TASKTYPE CASCADE;
 
 
-CREATE TYPE WEIGHTING AS ENUM ('1', '2', '3', '4', '5');
+CREATE TYPE WEIGHTING AS ENUM ('fixed', 'critical', 'slippable', 'moveable');
 CREATE TYPE DAY_OF_WEEK AS ENUM ('0', '1', '2', '3', '4', '5', '6');
 CREATE TYPE TEMPLATE AS ENUM ('0', '1', '2', '3', '4', '5');
 CREATE TYPE HOURS AS ENUM('00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23');
 CREATE TYPE MINUTES AS ENUM('00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '64', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59');
 
+CREATE TYPE TASKTYPE AS ENUM('Volume Related', 'Customer Related', 'Customer Related Multiple', 'Fixed Length Filler', 'Variable Length Filler');
 
-# for rotasort to create tables
+-- for rotasort to create tables
 DROP TABLE IF EXISTS public.tasks;
 DROP TABLE IF EXISTS public.staff;
-DROP TABLE IF EXISTS public.task_staff_link;
+DROP TABLE IF EXISTS public.skills_staff_link;
+DROP TABLE IF EXISTS public.skills_task_link;
 DROP TABLE IF EXISTS public.calendars;
 DROP TABLE IF EXISTS public.break_values;
 DROP TABLE IF EXISTS public.companies;
@@ -30,21 +33,19 @@ DROP TABLE IF EXISTS public.registrations;
 CREATE TABLE IF NOT EXISTS tasks (
 id serial primary key,
 task_name VARCHAR(64) not null,            
-companies_id INTEGER not null,      
-stores_id INTEGER not null,           
-weighting WEIGHTING,            
-task_types INTEGER not null,            
-frequency VARCHAR(64) not null,             
+task_type TASKTYPE,            
+weighting WEIGHTING,                         
 time_when TIME,            
 time_offset TIME,           
-time_float TIME,            
+time_float BOOLEAN,            
 time_length INTERVAL,          
-person_per_flow VARCHAR(64) not null,       
-person_per_volume VARCHAR(64) not null,     
-time_max INTERVAL,             
+no_of_jobs INTEGER DEFAULT 1,     
 time_min INTERVAL,              
+time_max INTERVAL,             
 day_of_week DAY_OF_WEEK,            
 active BOOLEAN, 
+companies_id INTEGER not null,      
+stores_id INTEGER not null,           
 updated_at DATE,        
 created_at DATE
 );                    
@@ -53,19 +54,18 @@ COMMENT ON TABLE public.tasks IS 'tasks to be performed';
 CREATE TABLE IF NOT EXISTS staff(
 id serial primary key,
 email VARCHAR(255) not null,
+username VARCHAR(60) not null,
 password VARCHAR(64) not null,
 phone VARCHAR(64) not null,
-address VARCHAR(64) not null,
+address TEXT,
 postcode VARCHAR(64) not null,
 firstname VARCHAR(64) not null,
 lastname VARCHAR(64) not null,
-role_id VARCHAR(64) not null,
-stores_id INTEGER not null,
 companies_id INTEGER not null,
+stores_id INTEGER not null,
 dept_id INTEGER not null,
-username VARCHAR(60) not null,
 siteowner BOOLEAN,
-breaks INTEGER,
+breaks_id INTEGER,
 created_on DATE,
 updated_on DATE
 );
@@ -74,19 +74,28 @@ COMMENT ON TABLE public.staff IS 'staff in the store';
 -- wrong should be staff to skills 
 -- and a tasks to skills or something better
 
-CREATE TABLE IF NOT EXISTS task_staff_link(
+CREATE TABLE IF NOT EXISTS skills_staff_link(
 id serial primary key,
-staff_id INTEGER,
-task_id INTEGER,
+staff_id INTEGER not null,
+skills_id INTEGER not null,
 created_on DATE,
 updated_on DATE
 );
-COMMENT ON TABLE public.task_staff_link IS 'yyyyyyyy';
+COMMENT ON TABLE public.skills_staff_link IS 'the linkage of staff with skills';
+
+CREATE TABLE IF NOT EXISTS skills_task_link(
+id serial primary key,
+task_id INTEGER not null,
+skills_id INTEGER not null,
+created_on DATE,
+updated_on DATE
+);
+COMMENT ON TABLE public.skills_task_link IS 'the linkage of tasks with skills';
 
 CREATE TABLE IF NOT EXISTS calendars(
 id serial primary key,
-stores_id INTEGER,
-companies_id INTEGER,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
 day DAY_OF_WEEK,
 date DATE,
 opo TIME,
@@ -98,14 +107,17 @@ created_on DATE,
 updated_on DATE
 );
 COMMENT ON TABLE public.calendars IS 'ability to build a calendar to use in the system';
+COMMENT ON COLUMN public.rainbow.opo IS 'operating - someone in the store opening time';
+COMMENT ON COLUMN public.rainbow.opc IS 'operating - close';
+COMMENT ON COLUMN public.rainbow.puo IS 'open to public - opening time';
+COMMENT ON COLUMN public.rainbow.puc IS 'open to public - closing time';
 
 CREATE TABLE IF NOT EXISTS break_values(
 id serial primary key,
 break_start TIME,
 break_end TIME,
-break_time INTERVAL,
-companies_id VARCHAR(64) not null,
-stores_id INTEGER,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
 created_on DATE,
 updated_on DATE
 );
@@ -119,6 +131,7 @@ address VARCHAR(255) not null,
 postcode VARCHAR(255) not null,
 phone_number VARCHAR(255) not null,
 company_url VARCHAR(255) not null,
+company_notes TEXT,
 created_on DATE,
 updated_on DATE
 );
@@ -126,13 +139,14 @@ COMMENT ON TABLE public.companies IS 'company information';
 
 CREATE TABLE IF NOT EXISTS stores(
 id serial primary key,
-companies_id INTEGER,
+companies_id INTEGER not null,
 store_name VARCHAR(255) not null,
 email VARCHAR(255) not null,
 address VARCHAR(255) not null,
 postcode VARCHAR(255) not null,
 phone_number VARCHAR(255) not null,
 stores_url VARCHAR(255) not null,
+stores_notes TEXT,
 created_on DATE,
 updated_on DATE
 );
@@ -141,8 +155,8 @@ COMMENT ON TABLE public.stores IS 'store information';
 CREATE TABLE IF NOT EXISTS departments(
 id serial primary key,
 department_name VARCHAR(255) not null,
-companies_id INTEGER,
-stores_id INTEGER,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
 department_notes TEXT,
 created_on DATE,
 updated_on DATE
@@ -151,6 +165,8 @@ COMMENT ON TABLE public.departments IS 'department information';
 
 CREATE TABLE IF NOT EXISTS operations(
 id serial primary key,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
 day_of_week DAY_OF_WEEK,
 open_closed BOOLEAN,
 opening_time TIME,
@@ -158,7 +174,7 @@ closing_time TIME,
 operating_hours_start TIME,
 operating_hours_end TIME,
 shift_lengths INTERVAL,
-stores_id INTEGER,
+stores_id INTEGER not null,
 created_on DATE,
 updated_on DATE
 );
@@ -166,9 +182,10 @@ COMMENT ON TABLE public.operations IS 'operationg times, opening times etc';
 
 CREATE TABLE IF NOT EXISTS skills(
 id serial primary key,
-skill VARCHAR(255) not null,
+skill VARCHAR(64) not null,
 description TEXT,
-stores_id INTEGER,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
 skill_weighting WEIGHTING,
 created_on DATE,
 updated_on DATE
@@ -179,6 +196,8 @@ COMMENT ON TABLE public.skills IS 'skills require to do a task';
 CREATE TABLE IF NOT EXISTS templates(
 id serial primary key,
 name VARCHAR(255) not null,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
 template_type TEMPLATE,
 description TEXT,
 day DAY_OF_WEEK,
@@ -193,6 +212,8 @@ COMMENT ON TABLE public.templates IS 'i thingk this was for the more complex shi
 CREATE TABLE IF NOT EXISTS requirements(
 id serial primary key,
 name VARCHAR(255) not null,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
 start_hour HOURS,
 start_minute MINUTES,
 end_hour HOURS,
@@ -213,6 +234,8 @@ COMMENT ON TABLE public.requirements IS 'not sure what i created this for';
 CREATE TABLE IF NOT EXISTS registrations(
 id serial primary key,
 email VARCHAR(255) not null,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
 name VARCHAR(255) not null,
 comments TEXT,
 classification  VARCHAR(255) not null,
@@ -225,24 +248,7 @@ COMMENT ON TABLE public.registrations IS 'not sure what i created this for';
 
 
 
-#....................................
-# create enumerted types then use
-DROP TYPE WEIGHTING;
-DROP TYPE DAY_OF_WEEK;
-DROP TYPE TEMPLATE;
-DROP TYPE HOURS;
-DROP TYPE MINUTES;
-
-
-CREATE TYPE IF NOT EXISTS  WEIGHTING AS ENUM ('1', '2', '3', '4', '5');
-CREATE TYPE IF NOT EXISTS DAY_OF_WEEK AS ENUM ('0', '1', '2', '3', '4', '5', '6');
-CREATE TYPE IF NOT EXISTS TEMPLATE AS ENUM ('0', '1', '2', '3', '4', '5');
-CREATE TYPE IF NOT EXISTS HOURS AS ENUM('00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23');
-CREATE TYPE IF NOT EXISTS MINUTES AS ENUM('00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '64', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59');
-
-
-
-
+-- ....................................
 DROP TABLE public.rainbow;
 
 CREATE TABLE public.rainbow
