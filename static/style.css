@@ -22,7 +22,7 @@ h2 a:hover { color: #90bcd0; }
 .break { clear:both; }
 
 /* WRAPPER */
-#wrapper { width:800px; margin:40px auto; }
+#wrapper { width:100px; margin:40px auto; }
 
 /* CONTENT */
 #content { }
