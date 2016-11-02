@@ -37,13 +37,13 @@ task_type TASKTYPE,
 weighting WEIGHTING,                         
 time_when TIME,            
 time_offset TIME,           
-time_float BOOLEAN,            
+time_float BOOLEAN  DEFAULT false,            
 time_length INTERVAL,          
 no_of_jobs INTEGER DEFAULT 1,     
 time_min INTERVAL,              
 time_max INTERVAL,             
 day_of_week DAY_OF_WEEK,            
-active BOOLEAN, 
+active BOOLEAN DEFAULT true, 
 companies_id INTEGER not null,      
 stores_id INTEGER not null,           
 updated_at DATE,        
@@ -56,15 +56,16 @@ id serial primary key,
 email VARCHAR(255) not null,
 username VARCHAR(60) not null,
 password VARCHAR(64) not null,
-phone VARCHAR(64) not null,
+phone VARCHAR(64),
 address TEXT,
-postcode VARCHAR(64) not null,
-firstname VARCHAR(64) not null,
-lastname VARCHAR(64) not null,
+postcode VARCHAR(64),
+firstname VARCHAR(64),
+lastname VARCHAR(64),
 companies_id INTEGER not null,
 stores_id INTEGER not null,
 dept_id INTEGER not null,
-siteowner BOOLEAN,
+siteowner BOOLEAN DEFAULT false,
+active BOOLEAN DEFAULT true,
 breaks_id INTEGER,
 created_on DATE,
 updated_on DATE
@@ -107,10 +108,6 @@ created_on DATE,
 updated_on DATE
 );
 COMMENT ON TABLE public.calendars IS 'ability to build a calendar to use in the system';
-COMMENT ON COLUMN public.rainbow.opo IS 'operating - someone in the store opening time';
-COMMENT ON COLUMN public.rainbow.opc IS 'operating - close';
-COMMENT ON COLUMN public.rainbow.puo IS 'open to public - opening time';
-COMMENT ON COLUMN public.rainbow.puc IS 'open to public - closing time';
 
 CREATE TABLE IF NOT EXISTS break_values(
 id serial primary key,
@@ -174,7 +171,6 @@ closing_time TIME,
 operating_hours_start TIME,
 operating_hours_end TIME,
 shift_lengths INTERVAL,
-stores_id INTEGER not null,
 created_on DATE,
 updated_on DATE
 );
@@ -290,7 +286,7 @@ CREATE TABLE public.rainbow
 "point" point,  
 "line" line,   
 "lseg" lseg,   
-"box" box ,    
+"box" box,    
 "path_closed" path,   
 "path_open" path,   
 "polygon" polygon,

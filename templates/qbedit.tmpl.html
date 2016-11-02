@@ -1,0 +1,116 @@
+<html>                      
+{{template "header.tmpl.html"}}
+
+<body>
+    {{template "nav.tmpl.html"}}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <a href="/" class="lang-logo">
+                <img src="/static/images/sophiadex.png" />
+            </a>
+            <h1>Question Builder and Management</h1>
+            <!-- form -->
+            <form action="http://www.sophiadex.uk/qbupdate" method="post" name="qbupdate" enctype="application/x-www-form-urlencoded" autocomplete="on" >
+            {{range .Questions}}
+            <div class="autocomplete">
+                <label for="CourseReference" class="col-xs-2 col-form-label">Course Reference</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.CourseReference}}"  name="CourseReference"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="CourseTitle" class="col-xs-2 col-form-label">Course Title</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.CourseTitle}}"  name="CourseTitle"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Question" class="col-xs-2 col-form-label">Question</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.Question}}"  name="Question"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Answer_1" class="col-xs-2 col-form-label">Answer 1</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.Answer_1}}" name="Answer_1" placeholder="Correct answer goes here"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Answer_2" class="col-xs-2 col-form-label">Answer 2</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.Answer_2}}"  name="Answer_2" placeholder="Alternative answer goes here"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Answer_3" class="col-xs-2 col-form-label">Answer 3</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.Answer_3}}" name="Answer_3" placeholder="Optional answer goes here"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Answer_4" class="col-xs-2 col-form-label">Answer 4</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.Answer_4}}"  name="Answer_4" placeholder="Optional answer goes here"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Reveal_text" class="col-xs-2 col-form-label">Reveal text</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.Reveal_text}}"  name="Reveal_text" placeholder="User can see this when they have answered, elucidates question"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Tna_level_one_id" class="col-xs-2 col-form-label">Tna level one id</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="number" value="{{.Tna_level_one_id}}"  name="Tna_level_one_id"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Tna_level_two_id" class="col-xs-2 col-form-label">Tna level two id</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="number" value="{{.Tna_level_two_id}}"  name="Tna_level_two_id"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Tna_level_three_id" class="col-xs-2 col-form-label">Tna level three id</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="number" value="{{.Tna_level_three_id}}"  name="Tna_level_three_id"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Image_link_id" class="col-xs-2 col-form-label">Image link id</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="number" value="{{.Image_link_id}}" name="Image_link_id"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Max_question_time" class="col-xs-2 col-form-label">Max question time</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="number" value="{{.Max_question_time}}"  name="Max_question_time"  placeholder="In seconds"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Question_weighting" class="col-xs-2 col-form-label">Question weighting</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="text" value="{{.Question_weighting}}"  name="Question_weighting"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                
+                <div class="col-xs-10">
+                    <input class="form-control" type="hidden" value="{{.Id}}"  name="Id"/>
+                </div>
+            </div>
+            <div class="form-group row">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+ 
+            </form>
+            {{end}}
+            <!-- end of form -->
+        </div>
+    </div>
+</body>
+
+</html>
