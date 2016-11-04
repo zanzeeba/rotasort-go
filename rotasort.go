@@ -9,6 +9,15 @@ import (
 
 // transfer qb from db to template
 type Entry struct {
+	Id        int64
+	Username  string
+	Firstname string
+	Lastname  string
+	StoresId  int64
+}
+
+// transfer qb from db to template
+type Testing struct {
 	Id          int64
 	Email       string
 	Username    string
