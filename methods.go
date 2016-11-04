@@ -14,6 +14,14 @@ import (
 // staff listing page
 func getStaff(c *gin.Context) {
 
+	var (
+		id        int64
+		dept_id   int64
+		username  string
+		firstname string
+		lastname  string
+	)
+
 	rows, err := db.Query("SELECT id, username, firstname, lastname, dept_id FROM staff")
 	if err != nil {
 		c.String(http.StatusInternalServerError,
@@ -22,14 +30,6 @@ func getStaff(c *gin.Context) {
 	}
 
 	defer rows.Close()
-
-	var (
-		id        int64
-		dept_id   int64
-		username  string
-		firstname string
-		lastname  string
-	)
 
 	results := []Staff{}
 	tRes := Staff{}
