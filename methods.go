@@ -16,7 +16,7 @@ func getStaff(c *gin.Context) {
 
 	var (
 		id        int64
-		dept_id   int64
+		stores_id int64
 		username  string
 		firstname string
 		lastname  string
