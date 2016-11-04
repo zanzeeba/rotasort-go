@@ -31,8 +31,8 @@ func getStaff(c *gin.Context) {
 
 	defer rows.Close()
 
-	results := []Staff{}
-	tRes := Staff{}
+	results := []Entry{}
+	tRes := Entry{}
 	for rows.Next() {
 		fmt.Println(".............................")
 		fmt.Println(rows)

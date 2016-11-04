@@ -8,7 +8,7 @@ import (
 // mine
 
 // transfer qb from db to template
-type Staff struct {
+type Entry struct {
 	Id          int64
 	Email       string
 	Username    string
