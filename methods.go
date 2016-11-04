@@ -35,7 +35,7 @@ func getStaff(c *gin.Context) {
 	tRes := Staff{}
 	for rows.Next() {
 
-		rows.Scan(&id, &question, &answer_1, &course_reference)
+		rows.Scan(&id, &dept_id, &username, &firstname, &lastname)
 
 		tRes.Id = id
 		tRes.Username = username
