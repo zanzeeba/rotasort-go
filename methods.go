@@ -36,11 +36,11 @@ func getStaff(c *gin.Context) {
 	for rows.Next() {
 		fmt.Println(".............................")
 		fmt.Println(rows)
-		rows.Scan(&id, &dept_id, &username, &firstname, &lastname)
+		rows.Scan(&id, &stores_id, &username, &firstname, &lastname)
 
 		tRes.Id = id
 		tRes.Username = username
-		tRes.StoresId = dept_id
+		tRes.StoresId = stores_id
 		tRes.Firstname = firstname
 		tRes.Lastname = lastname
 		results = append(results, tRes)
