@@ -36,5 +36,20 @@
         </div>
     </div>
 </body>
+<script>
+$(document).ready(function() {
+    // call the tablesorter plugin
+    $("table").tablesorter({
+        // sort on the first column and third column, order asc
+        sortList: [[0,0],[0,0]]
+    });
+        $(function() {      
+        $("#tablesorter-demo").tablesorter({sortList:[[0,0],[0,1]], widgets: ['zebra']});
+        $("#options").tablesorter({sortList: [[0,0]], headers: { 3:{sorter: false}, 4:{sorter: false}}});
+    }); 
 
+}); 
+
+
+</script>
 </html>

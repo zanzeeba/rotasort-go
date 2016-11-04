@@ -22,6 +22,8 @@ func getStaff(c *gin.Context) {
 	}
 
 	defer rows.Close()
+	fmt.Println(".............................")
+	fmt.Println(rows)
 
 	var (
 		id        int64
