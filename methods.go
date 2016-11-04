@@ -14,7 +14,7 @@ import (
 // staff listing page
 func getStaff(c *gin.Context) {
 
-	rows, err := db.Query("SELECT username, firstname, lastname, dept_id FROM staff")
+	rows, err := db.Query("SELECT id, username, firstname, lastname, dept_id FROM staff")
 	if err != nil {
 		c.String(http.StatusInternalServerError,
 			fmt.Sprintf("Error reading questions: %q", err))
