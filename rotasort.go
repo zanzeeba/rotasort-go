@@ -5,6 +5,31 @@ import (
 	"fmt"
 )
 
+// mine
+
+// transfer qb from db to template
+type Staff struct {
+	Id          int64
+	Email       string
+	Username    string
+	Password    string
+	Phone       string
+	Address     string
+	Postcode    string
+	Firstname   string
+	Lastname    string
+	CompaniesId int64
+	StoresId    int64
+	DeptId      int64
+	Siteowner   bool
+	Active      bool
+	BreaksId    int64
+	CreatedOn   int64
+	UpdatedOn   int64
+}
+
+// depoels
+
 var (
 	// ErrEmptyName - name is required
 	ErrEmptyName = errors.New("name not set")

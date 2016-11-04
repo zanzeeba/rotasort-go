@@ -10,6 +10,47 @@ import (
 	_ "github.com/lib/pq"
 )
 
+//	-    -    -    -    -    -    -
+// staff listing page
+func getStaff(c *gin.Context) {
+
+	rows, err := db.Query("SELECT username, firstname, lastname, dept_id FROM staff")
+	if err != nil {
+		c.String(http.StatusInternalServerError,
+			fmt.Sprintf("Error reading questions: %q", err))
+		return
+	}
+
+	defer rows.Close()
+
+	var (
+		id        int64
+		dept_id   int64
+		username  string
+		firstname string
+		lastname  string
+	)
+
+	results := []Staff{}
+	tRes := Staff{}
+	for rows.Next() {
+
+		rows.Scan(&id, &question, &answer_1, &course_reference)
+
+		tRes.Id = id
+		tRes.Username = username
+		tRes.DeptId = dept_id
+		tRes.Firstname = firstname
+		tRes.Lastname = lastname
+		results = append(results, tRes)
+	}
+
+	c.HTML(http.StatusOK, "staff.tmpl.html", gin.H{
+		"Staffing": results,
+	})
+}
+
+// after this can all go
 func repeatHandler(c *gin.Context) {
 	var buffer bytes.Buffer
 	for i := 0; i < repeat; i++ {
