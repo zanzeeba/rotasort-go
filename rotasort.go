@@ -21,8 +21,8 @@ type Staff struct {
 	CompaniesId int64
 	StoresId    int64
 	DeptId      int64
-	Siteowner   bool
-	Active      bool
+	Siteowner   boolean
+	Active      boolean
 	BreaksId    int64
 	CreatedOn   int64
 	UpdatedOn   int64

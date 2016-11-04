@@ -22,8 +22,6 @@ func getStaff(c *gin.Context) {
 	}
 
 	defer rows.Close()
-	fmt.Println(".............................")
-	fmt.Println(rows)
 
 	var (
 		id        int64
@@ -46,6 +44,9 @@ func getStaff(c *gin.Context) {
 		tRes.Lastname = lastname
 		results = append(results, tRes)
 	}
+
+	fmt.Println(".............................")
+	fmt.Println(rows)
 
 	c.HTML(http.StatusOK, "staff.tmpl.html", gin.H{
 		"Staffing": results,
