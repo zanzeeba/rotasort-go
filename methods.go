@@ -47,7 +47,7 @@ func getStaff(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "staff.tmpl.html", gin.H{
-		"Staffing": results,
+		"Questions": results,
 	})
 }
 
