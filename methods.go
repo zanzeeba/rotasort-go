@@ -31,8 +31,8 @@ func getStaff(c *gin.Context) {
 
 	defer rows.Close()
 
-	results := []Entry{}
-	tRes := Entry{}
+	results := []Staff{}
+	tRes := Staff{}
 	for rows.Next() {
 		fmt.Println(".............................")
 		fmt.Println(rows)
@@ -47,7 +47,7 @@ func getStaff(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "staff.tmpl.html", gin.H{
-		"Questions": results,
+		"Staffing": results,
 	})
 }
 

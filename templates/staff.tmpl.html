@@ -7,8 +7,7 @@
             <a href="/" class="lang-logo">
                 <img src="/static/images/rotasort.png"/>
             </a>
-            <h1>Staff and Management</h1>
-            <p>{{.Questions}}</p>
+            <h1>Staff and Staff Management</h1>
             <a href="http://www.rotasort.uk/qbcreateform"><img src="static/images/file_add.png"/></a>
             <table id="qblisting" class="tablesorter">
                 <thead>
@@ -22,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{range .Questions}}
+                    {{range .Staffing}}
                     <tr>
                         <td> {{.Username}} </td>
                         <td> {{.Firstname}} </td>
