@@ -22,7 +22,7 @@ func getStaff(c *gin.Context) {
 		lastname  string
 	)
 
-	rows, err := db.Query("SELECT id, username, firstname, lastname, dept_id FROM staff")
+	rows, err := db.Query("SELECT id, username, firstname, lastname, stores_id FROM staff")
 	if err != nil {
 		c.String(http.StatusInternalServerError,
 			fmt.Sprintf("Error reading questions: %q", err))
@@ -40,7 +40,7 @@ func getStaff(c *gin.Context) {
 
 		tRes.Id = id
 		tRes.Username = username
-		tRes.DeptId = dept_id
+		tRes.StoresId = dept_id
 		tRes.Firstname = firstname
 		tRes.Lastname = lastname
 		results = append(results, tRes)
