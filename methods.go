@@ -45,9 +45,6 @@ func getStaff(c *gin.Context) {
 		results = append(results, tRes)
 	}
 
-	fmt.Println(".............................")
-	fmt.Println(rows)
-
 	c.HTML(http.StatusOK, "staff.tmpl.html", gin.H{
 		"Staffing": results,
 	})

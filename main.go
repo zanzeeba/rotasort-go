@@ -59,9 +59,7 @@ func main() {
 
 	router.GET("/templtest", getTemplTest)
 
-	router.GET("/staff", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "staff.tmpl.html", nil)
-	})
+	router.GET("/staff", getStaff)
 
 	router.GET("/tasks", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "tasks.tmpl.html", nil)
