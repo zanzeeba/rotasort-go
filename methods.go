@@ -56,7 +56,7 @@ func getStaff(c *gin.Context) {
 func getStaffedit(c *gin.Context) {
 
 	// the parameter - id of the question
-	qid := c.Param("sid")
+	sid := c.Param("sid")
 
 	var (
 		id           int64
