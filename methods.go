@@ -78,7 +78,7 @@ func getStaffedit(c *gin.Context) {
 		updatedOn    int64
 	)
 
-	err = db.QueryRow("SELECT id, id,email,username,password,phone,address,postcode,firstname,lastname,companies_id,stores_id,dept_id,siteowner,active,breaksId,createdOn,updatedOn WHERE id = $1", qid).Scan(&id, &tna_level_one_id, &tna_level_two_id, &tna_level_three_id, &course_reference, &course_title, &question, &answer_1, &answer_2, &answer_3, &answer_4, &reveal_text, &image_link_id, &max_question_time, &question_weighting)
+	err = db.QueryRow("SELECT id,email,username,password,phone,address,postcode,firstname,lastname,companies_id,stores_id,dept_id,siteowner,active,breaksId,createdOn,updatedOn WHERE id = $1", qid).Scan(&id, &email, &username, &password, &phone, &address, &postcode, &firstname, &lastname, &companies_id, &stores_id, &dept_id, &siteowner, &active, &breaksId, &createdOn, &updatedOn)
 
 	if err != nil {
 		c.String(http.StatusInternalServerError,
