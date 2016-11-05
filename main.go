@@ -59,8 +59,14 @@ func main() {
 
 	router.GET("/templtest", getTemplTest)
 
+	//    -    -    -    -    -    -    -    -    -
+	// staff routing block
 	router.GET("/staff", getStaff)
 
+	router.GET("/staffedit/:sid", getStaffedit)
+
+	//    -    -    -    -    -    -    -    -    -
+	//tasks routing block
 	router.GET("/tasks", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "tasks.tmpl.html", nil)
 	})

@@ -51,6 +51,71 @@ func getStaff(c *gin.Context) {
 	})
 }
 
+//	-    -    -    -    -    -    -
+// staff edit page
+func getStaffedit(c *gin.Context) {
+
+	// the parameter - id of the question
+	qid := c.Param("qid")
+
+	var (
+		id           int64
+		email        string
+		username     string
+		password     string
+		phone        string
+		address      string
+		postcode     string
+		firstname    string
+		lastname     string
+		companies_id int64
+		stores_id    int64
+		dept_id      int64
+		siteowner    bool
+		active       bool
+		breaksId     int64
+		createdOn    int64
+		updatedOn    int64
+	)
+
+	err = db.QueryRow("SELECT id, id,email,username,password,phone,address,postcode,firstname,lastname,companies_id,stores_id,dept_id,siteowner,active,breaksId,createdOn,updatedOn WHERE id = $1", qid).Scan(&id, &tna_level_one_id, &tna_level_two_id, &tna_level_three_id, &course_reference, &course_title, &question, &answer_1, &answer_2, &answer_3, &answer_4, &reveal_text, &image_link_id, &max_question_time, &question_weighting)
+
+	if err != nil {
+		c.String(http.StatusInternalServerError,
+			fmt.Sprintf("Error reading questions: %q", err))
+		return
+	}
+
+	defer rows.Close()
+	results := []Entry{}
+	tRes := Entry{}
+
+	tRes.Id = id
+	tRes.Email = email
+	tRes.Username = username
+	tRes.Password = password
+	tRes.Phone = phone
+	tRes.Address = address
+	tRes.Postcode = postcode
+	tRes.Firstname = firstname
+	tRes.Lastname = lastname
+	tRes.CompaniesId = companies_id
+	tRes.StoresId = stores_id
+	tRes.DeptId = dept_id
+	tRes.Siteowner = siteowner
+	tRes.Active = active
+	tRes.BreaksId = breaksId
+	tRes.CreatedOn = createdOn
+	tRes.UpdatedOn = updatedOn
+
+	results = append(results, tRes)
+
+	c.HTML(http.StatusOK, "staffedit.tmpl.html", gin.H{
+		"Staffing": results,
+	})
+
+}
+
 // after this can all go
 func repeatHandler(c *gin.Context) {
 	var buffer bytes.Buffer
