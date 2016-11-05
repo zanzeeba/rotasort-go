@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"time"
 )
 
 // mine
@@ -25,8 +26,8 @@ type Staff struct {
 	Siteowner   bool
 	Active      bool
 	BreaksId    int64
-	CreatedOn   date
-	UpdatedOn   date
+	CreatedOn   time.Time
+	UpdatedOn   time.Time
 }
 
 // depoels
