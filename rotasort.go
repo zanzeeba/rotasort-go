@@ -25,8 +25,8 @@ type Staff struct {
 	Siteowner   bool
 	Active      bool
 	BreaksId    int64
-	CreatedOn   int64
-	UpdatedOn   int64
+	CreatedOn   date
+	UpdatedOn   date
 }
 
 // depoels

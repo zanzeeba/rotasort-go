@@ -74,8 +74,8 @@ func getStaffedit(c *gin.Context) {
 		siteowner    bool
 		active       bool
 		breaks_id    int64
-		created_on   int64
-		updated_on   int64
+		created_on   date
+		updated_on   date
 	)
 
 	err := db.QueryRow("SELECT id, email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id, siteowner, active, breaks_id, created_on, updated_on FROM staff WHERE id = $1", sid).Scan(&id, &email, &username, &password, &phone, &address, &postcode, &firstname, &lastname, &companies_id, &stores_id, &dept_id, &siteowner, &active, &breaks_id, &created_on, &updated_on)
