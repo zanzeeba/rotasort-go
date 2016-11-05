@@ -86,7 +86,7 @@ func getStaffedit(c *gin.Context) {
 		return
 	}
 
-	defer rows.Close()
+	//defer rows.Close()
 	results := []Staff{}
 	tRes := Staff{}
 
