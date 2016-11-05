@@ -104,9 +104,9 @@ func getStaffedit(c *gin.Context) {
 	tRes.DeptId = dept_id
 	tRes.Siteowner = siteowner
 	tRes.Active = active
-	tRes.BreaksId = breaksId
-	tRes.CreatedOn = createdOn
-	tRes.UpdatedOn = updatedOn
+	tRes.BreaksId = breaks_id
+	tRes.CreatedOn = created_on
+	tRes.UpdatedOn = updated_on
 
 	results = append(results, tRes)
 
