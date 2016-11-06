@@ -144,7 +144,7 @@ func postStaffupdate(c *gin.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := stmt.Exec(email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id, siteowner, active, breaks_id, created_on, updated_on, id)
+	res, err := stmt.Exec(email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id, siteowner, active, breaks_id, updated_on, id)
 
 	if err != nil {
 		log.Fatal(err)
