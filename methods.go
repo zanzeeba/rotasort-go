@@ -157,6 +157,35 @@ func postStaffupdate(c *gin.Context) {
 
 }
 
+//	-    -    -    -    -    -    -
+// staff delete page row from db
+func getStaffdelete(c *gin.Context) {
+
+	// the parameter - id of the question
+	sid := c.Param("sid")
+
+	stmt, err := db.Prepare("DELETE FROM staff WHERE id = $1")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := stmt.Exec(sid)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "staffdelete.tmpl.html", gin.H{
+		"staff": "going to delete ",
+		"sid":   sid,
+		"res":   res,
+	})
+
+}
+
+//	-    -    -    -    -    -    -
+//	-    -    -    -    -    -    -
+//	-    -    -    -    -    -    -
 // after this can all go
 func repeatHandler(c *gin.Context) {
 	var buffer bytes.Buffer

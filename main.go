@@ -67,7 +67,7 @@ func main() {
 
 	router.POST("/staffupdate", postStaffupdate)
 
-	//router.GET("/qbdelete/:qid", getQbdelete)
+	router.GET("/staffdelete/:sid", getStaffdelete)
 
 	//router.GET("/qbcreateform", getQbcreateform)
 
