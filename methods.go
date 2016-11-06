@@ -113,6 +113,46 @@ func getStaffedit(c *gin.Context) {
 	c.HTML(http.StatusOK, "staffedit.tmpl.html", gin.H{
 		"Staffing": results,
 	})
+}
+
+//	-    -    -    -    -    -    -
+// question builder update page
+func postStaffupdate(c *gin.Context) {
+
+	// get all the post vars
+	id := c.PostForm("Id")
+	email := c.PostForm("Email")
+	username := c.PostForm("Username")
+	password := c.PostForm("Password")
+	phone := c.PostForm("Phone")
+	address := c.PostForm("Address")
+	postcode := c.PostForm("Postcode")
+	firstname := c.PostForm("Firstname")
+	lastname := c.PostForm("Lastname")
+	companies_id := c.PostForm("CompaniesId")
+	stores_id := c.PostForm("StoresId")
+	dept_id := c.PostForm("DeptId")
+	siteowner := c.PostForm("Siteowner")
+	active := c.PostForm("Active")
+	breaks_id := c.PostForm("BreaksId")
+	created_on := c.PostForm("CreatedOn")
+	updated_on := c.PostForm("UpdatedOn")
+
+	stmt, err := db.Prepare("UPDATE staff SET email = $1, username = $2, password = $3, phone = $4, address = $5, postcode = $6, firstname = $7, lastname = $8, companies_id = $9, stores_id = $10, dept_id = $11, siteowner = $12, active = $13, breaks_id = $14, created_on = $15, updated_on = $16 WHERE id = $17")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := stmt.Exec(email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id, siteowner, active, breaks_id, created_on, updated_on, id)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "staffupdate.tmpl.html", gin.H{
+		"username": username,
+		"res":      res,
+	})
 
 }
 

@@ -65,6 +65,14 @@ func main() {
 
 	router.GET("/staffedit/:sid", getStaffedit)
 
+	router.POST("/staffupdate", postStaffupdate)
+
+	//router.GET("/qbdelete/:qid", getQbdelete)
+
+	//router.GET("/qbcreateform", getQbcreateform)
+
+	//router.POST("/qbcreate", postQbcreate)
+
 	//    -    -    -    -    -    -    -    -    -
 	//tasks routing block
 	router.GET("/tasks", func(c *gin.Context) {
