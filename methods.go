@@ -139,7 +139,7 @@ func postStaffupdate(c *gin.Context) {
 	active := c.PostForm("Active")
 	breaks_id := c.PostForm("BreaksId")
 
-	stmt, err := db.Prepare("UPDATE staff SET email = $1, username = $2, password = $3, phone = $4, address = $5, postcode = $6, firstname = $7, lastname = $8, companies_id = $9, stores_id = $10, dept_id = $11, siteowner = $12, active = $13, breaks_id = $14, created_on = $15, updated_on = $16 WHERE id = $17")
+	stmt, err := db.Prepare("UPDATE staff SET email = $1, username = $2, password = $3, phone = $4, address = $5, postcode = $6, firstname = $7, lastname = $8, companies_id = $9, stores_id = $10, dept_id = $11, siteowner = $12, active = $13, breaks_id = $14, updated_on = $15 WHERE id = $16")
 
 	if err != nil {
 		log.Fatal(err)
