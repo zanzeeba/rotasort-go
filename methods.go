@@ -184,6 +184,52 @@ func getStaffdelete(c *gin.Context) {
 }
 
 //	-    -    -    -    -    -    -
+// staff create page just the form
+func getStaffcreateform(c *gin.Context) {
+
+	c.HTML(http.StatusOK, "staffcreate.tmpl.html", gin.H{})
+
+}
+
+//	-    -    -    -    -    -    -
+// staff create page code to add data to db
+func postStaffcreate(c *gin.Context) {
+	// code to write to db
+	// get all the post vars
+	tna_level_one_id := c.PostForm("Tna_level_one_id")
+	tna_level_two_id := c.PostForm("Tna_level_two_id")
+	tna_level_three_id := c.PostForm("Tna_level_three_id")
+	course_reference := c.PostForm("CourseReference")
+	course_title := c.PostForm("CourseTitle")
+	question := c.PostForm("Question")
+	answer_1 := c.PostForm("Answer_1")
+	answer_2 := c.PostForm("Answer_2")
+	answer_3 := c.PostForm("Answer_3")
+	answer_4 := c.PostForm("Answer_4")
+	reveal_text := c.PostForm("Reveal_text")
+	image_link_id := c.PostForm("Image_link_id")
+	max_question_time := c.PostForm("Max_question_time")
+	question_weighting := c.PostForm("Question_weighting")
+
+	stmt, err := db.Prepare("INSERT INTO questions (tna_level_one_id, tna_level_two_id, tna_level_three_id,course_reference,course_title, question, answer_1, answer_2, answer_3, answer_4, reveal_text, image_link_id, max_question_time, question_weighting) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := stmt.Exec(tna_level_one_id, tna_level_two_id, tna_level_three_id, course_reference, course_title, question, answer_1, answer_2, answer_3, answer_4, reveal_text, image_link_id, max_question_time, question_weighting)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "staffcreated.tmpl.html", gin.H{
+		"question": question,
+		"res":      res,
+	})
+
+}
+
+//	-    -    -    -    -    -    -
 //	-    -    -    -    -    -    -
 //	-    -    -    -    -    -    -
 // after this can all go

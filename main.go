@@ -69,9 +69,9 @@ func main() {
 
 	router.GET("/staffdelete/:sid", getStaffdelete)
 
-	//router.GET("/qbcreateform", getQbcreateform)
+	router.GET("/staffcreateform", getStaffcreateform)
 
-	//router.POST("/qbcreate", postQbcreate)
+	router.POST("/staffcreate", postStaffcreate)
 
 	//    -    -    -    -    -    -    -    -    -
 	//tasks routing block
