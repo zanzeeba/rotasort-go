@@ -12,7 +12,6 @@
     <div class="container">
         <!-- form -->
         <form action="http://www.rotasort.uk/staffupdate" method="post" name="staffupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
-            {{range .Staffing}}
             <div class="autocomplete">
                 <label for="Email" class="col-xs-4 col-form-label">Email</label>
                 <div class="col-xs-8">
@@ -93,7 +92,6 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
-        {{end}}
         <!-- end of form -->
     </div>
 </body>
