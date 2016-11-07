@@ -196,34 +196,31 @@ func getStaffcreateform(c *gin.Context) {
 func postStaffcreate(c *gin.Context) {
 	// code to write to db
 	// get all the post vars
-	tna_level_one_id := c.PostForm("Tna_level_one_id")
-	tna_level_two_id := c.PostForm("Tna_level_two_id")
-	tna_level_three_id := c.PostForm("Tna_level_three_id")
-	course_reference := c.PostForm("CourseReference")
-	course_title := c.PostForm("CourseTitle")
-	question := c.PostForm("Question")
-	answer_1 := c.PostForm("Answer_1")
-	answer_2 := c.PostForm("Answer_2")
-	answer_3 := c.PostForm("Answer_3")
-	answer_4 := c.PostForm("Answer_4")
-	reveal_text := c.PostForm("Reveal_text")
-	image_link_id := c.PostForm("Image_link_id")
-	max_question_time := c.PostForm("Max_question_time")
-	question_weighting := c.PostForm("Question_weighting")
+	email := c.PostForm("Email")
+	username := c.PostForm("Username")
+	password := c.PostForm("Password")
+	phone := c.PostForm("Phone")
+	address := c.PostForm("Address")
+	postcode := c.PostForm("Postcode")
+	firstname := c.PostForm("Firstname")
+	lastname := c.PostForm("Lastname")
+	companies_id := c.PostForm("CompaniesId")
+	stores_id := c.PostForm("StoresId")
+	dept_id := c.PostForm("DeptId")
 
-	stmt, err := db.Prepare("INSERT INTO questions (tna_level_one_id, tna_level_two_id, tna_level_three_id,course_reference,course_title, question, answer_1, answer_2, answer_3, answer_4, reveal_text, image_link_id, max_question_time, question_weighting) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)")
+	stmt, err := db.Prepare("INSERT INTO staff (email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)")
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := stmt.Exec(tna_level_one_id, tna_level_two_id, tna_level_three_id, course_reference, course_title, question, answer_1, answer_2, answer_3, answer_4, reveal_text, image_link_id, max_question_time, question_weighting)
+	res, err := stmt.Exec(email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	c.HTML(http.StatusOK, "staffcreated.tmpl.html", gin.H{
-		"question": question,
+		"username": username,
 		"res":      res,
 	})
 
