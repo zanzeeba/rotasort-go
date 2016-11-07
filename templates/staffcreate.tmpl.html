@@ -3,12 +3,13 @@
 
 <body>
     {{template "nav.tmpl.html"}}
-    <div class="jumbotron text-center"> </div>
-    <div class="container">
+    <div class="jumbotron text-center">
         <a href="/" class="lang-logo">
             <img src="/static/images/rotasort.png" />
         </a>
-        <h1>Staff Management</h1>
+        <h1>Staff Management Create</h1>
+    </div>
+    <div class="container">
         <!-- form -->
         <form action="http://www.rotasort.uk/staffupdate" method="post" name="staffupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
             {{range .Staffing}}
@@ -88,7 +89,6 @@
                     <input class="form-control" type="number" value="" name="BreaksId" placeholder="In seconds" />
                 </div>
             </div>
-
             <div class="form-group row">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
