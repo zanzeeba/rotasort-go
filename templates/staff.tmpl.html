@@ -1,39 +1,43 @@
 <html>
-  {{template "header.tmpl.html"}}
+{{template "header.tmpl.html"}}
+
 <body>
     {{template "nav.tmpl.html"}}
-    <div class="jumbotron text-center">
-        <div class="container">
-            <a href="/" class="lang-logo">
-                <img src="/static/images/rotasort.png"/>
-            </a>
-            <h1>Staff and Staff Management</h1>
-            <a href="http://www.rotasort.uk/qbcreateform"><img src="static/images/file_add.png"/></a>
-            <table id="qblisting" class="tablesorter">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Store</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{range .Staffing}}
-                    <tr>
-                        <td> {{.Username}} </td>
-                        <td> {{.Firstname}} </td>
-                        <td> {{.Lastname}} </td>
-                        <td> {{.StoresId}} </td>
-                        <td>  <a href="http://www.rotasort.uk/staffedit/{{.Id}}"><img src="static/images/file_edit.png"/></a></td>
-                        <td>  <a href="http://www.rotasort.uk/staffdelete/{{.Id}}"><img src="static/images/file_delete.png"/></a></td>
-                    </tr>
-                    {{end}}
-                </tbody>
-            </table>
-        </div>
+    <div class="jumbotron text-center"></div>
+    <div class="container">
+        <a href="/" class="lang-logo">
+            <img src="/static/images/rotasort.png" />
+        </a>
+        <h1>Staff and Staff Management</h1>
+        <a href="http://www.rotasort.uk/staffcreateform"><img src="static/images/file_add.png" /></a>
+        <table id="qblisting" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Store</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Staffing}}
+                <tr>
+                    <td> {{.Username}} </td>
+                    <td> {{.Firstname}} </td>
+                    <td> {{.Lastname}} </td>
+                    <td> {{.StoresId}} </td>
+                    <td>
+                        <a href="http://www.rotasort.uk/staffedit/{{.Id}}"><img src="static/images/file_edit.png" /></a>
+                    </td>
+                    <td>
+                        <a href="http://www.rotasort.uk/staffdelete/{{.Id}}"><img src="static/images/file_delete.png" /></a>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
     </div>
 </body>
 <script>
@@ -41,15 +45,35 @@ $(document).ready(function() {
     // call the tablesorter plugin
     $("table").tablesorter({
         // sort on the first column and third column, order asc
-        sortList: [[0,0],[0,0]]
+        sortList: [
+            [0, 0],
+            [0, 0]
+        ]
     });
-        $(function() {      
-        $("#tablesorter-demo").tablesorter({sortList:[[0,0],[0,1]], widgets: ['zebra']});
-        $("#options").tablesorter({sortList: [[0,0]], headers: { 3:{sorter: false}, 4:{sorter: false}}});
-    }); 
+    $(function() {
+        $("#tablesorter-demo").tablesorter({
+            sortList: [
+                [0, 0],
+                [0, 1]
+            ],
+            widgets: ['zebra']
+        });
+        $("#options").tablesorter({
+            sortList: [
+                [0, 0]
+            ],
+            headers: {
+                3: {
+                    sorter: false
+                },
+                4: {
+                    sorter: false
+                }
+            }
+        });
+    });
 
-}); 
-
-
+});
 </script>
+
 </html>
