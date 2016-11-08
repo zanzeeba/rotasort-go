@@ -53,22 +53,22 @@ COMMENT ON TABLE public.tasks IS 'tasks to be performed';
 
 CREATE TABLE IF NOT EXISTS staff(
 id serial primary key,
-email VARCHAR(255) not null,
-username VARCHAR(60) not null,
-password VARCHAR(64) not null,
-phone VARCHAR(64),
-address TEXT,
-postcode VARCHAR(64),
-firstname VARCHAR(64),
-lastname VARCHAR(64),
+email VARCHAR(255) DEFAULT,
+username VARCHAR(60) DEFAULT,
+password VARCHAR(64) DEFAULT,
+phone VARCHAR(64) DEFAULT,
+address TEXT DEFAULT,
+postcode VARCHAR(64) DEFAULT,
+firstname VARCHAR(64) DEFAULT,
+lastname VARCHAR(64) DEFAULT,
 companies_id INTEGER not null,
 stores_id INTEGER not null,
 dept_id INTEGER not null,
 siteowner BOOLEAN DEFAULT false,
 active BOOLEAN DEFAULT true,
-breaks_id INTEGER,
-created_on DATE,
-updated_on DATE
+breaks_id INTEGER DEFAULT,
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.staff IS 'staff in the store';
 
