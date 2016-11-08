@@ -11,93 +11,96 @@
         <h1>Staff Management</h1>
         <!-- form -->
         <form action="http://www.rotasort.uk/staffupdate" method="post" name="staffupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
-            {{range .Staffing}}
-            <div class="autocomplete">
-                <label for="Email" class="col-xs-4 col-form-label">Email</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.Email}}" name="Email" />
+            <fieldset>
+                <legend>Add staff member</legend>
+                {{range .Staffing}}
+                <div class="autocomplete">
+                    <label for="Email" class="col-xs-4 col-form-label">Email</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Email}}" name="Email" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="Username" class="col-xs-4 col-form-label">Username</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.Username}}" name="Username" />
+                <div class="form-group row">
+                    <label for="Username" class="col-xs-4 col-form-label">Username</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Username}}" name="Username" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="Password" class="col-xs-4 col-form-label">Password</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.Password}}" name="Password" />
+                <div class="form-group row">
+                    <label for="Password" class="col-xs-4 col-form-label">Password</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Password}}" name="Password" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="Phone" class="col-xs-4 col-form-label">Phone</label>
-                <input class="form-control" type="text" value="{{.Phone}}" name="Phone" placeholder="Phone" />
-            </div>
-            <div class="form-group row">
-                <label for="Postcode" class="col-xs-4 col-form-label">Postcode</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.Postcode}}" name="Postcode" placeholder="Postcode" />
+                <div class="form-group row">
+                    <label for="Phone" class="col-xs-4 col-form-label">Phone</label>
+                    <input class="form-control" type="text" value="{{.Phone}}" name="Phone" placeholder="Phone" />
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="Firstname" class="col-xs-4 col-form-label">Firstname</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.Firstname}}" name="Firstname" placeholder="Firstname" />
+                <div class="form-group row">
+                    <label for="Postcode" class="col-xs-4 col-form-label">Postcode</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Postcode}}" name="Postcode" placeholder="Postcode" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="Lastname" class="col-xs-4 col-form-label">Lastname</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.Lastname}}" name="Lastname" placeholder="Optional answer goes here" />
+                <div class="form-group row">
+                    <label for="Firstname" class="col-xs-4 col-form-label">Firstname</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Firstname}}" name="Firstname" placeholder="Firstname" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="CompaniesId" class="col-xs-4 col-form-label">CompaniesId</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.CompaniesId}}" name="CompaniesId" placeholder="User can see this when they have answered, elucidates question" />
+                <div class="form-group row">
+                    <label for="Lastname" class="col-xs-4 col-form-label">Lastname</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Lastname}}" name="Lastname" placeholder="Optional answer goes here" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="StoresId" class="col-xs-4 col-form-label">StoresId</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="number" value="{{.StoresId}}" name="StoresId" />
+                <div class="form-group row">
+                    <label for="CompaniesId" class="col-xs-4 col-form-label">CompaniesId</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.CompaniesId}}" name="CompaniesId" placeholder="User can see this when they have answered, elucidates question" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="DeptId" class="col-xs-4 col-form-label">DeptId</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="number" value="{{.DeptId}}" name="DeptId" />
+                <div class="form-group row">
+                    <label for="StoresId" class="col-xs-4 col-form-label">StoresId</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="number" value="{{.StoresId}}" name="StoresId" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="Siteowner" class="col-xs-4 col-form-label">Siteowner</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.Siteowner}}" name="Siteowner" />
+                <div class="form-group row">
+                    <label for="DeptId" class="col-xs-4 col-form-label">DeptId</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="number" value="{{.DeptId}}" name="DeptId" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="Active" class="col-xs-4 col-form-label">Active</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="text" value="{{.Active}}" name="Active" />
+                <div class="form-group row">
+                    <label for="Siteowner" class="col-xs-4 col-form-label">Siteowner</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Siteowner}}" name="Siteowner" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="BreaksId" class="col-xs-4 col-form-label">BreaksId</label>
-                <div class="col-xs-8">
-                    <input class="form-control" type="number" value="{{.BreaksId}}" name="BreaksId" placeholder="In seconds" />
+                <div class="form-group row">
+                    <label for="Active" class="col-xs-4 col-form-label">Active</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Active}}" name="Active" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-xs-8">
-                    <input class="form-control" type="hidden" value="{{.Id}}" name="Id" />
+                <div class="form-group row">
+                    <label for="BreaksId" class="col-xs-4 col-form-label">BreaksId</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="number" value="{{.BreaksId}}" name="BreaksId" placeholder="In seconds" />
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+                <div class="form-group row">
+                    <div class="col-xs-8">
+                        <input class="form-control" type="hidden" value="{{.Id}}" name="Id" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
         </form>
         {{end}}
+        </fieldset>
         <!-- end of form -->
     </div>
 </body>
