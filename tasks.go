@@ -54,7 +54,7 @@ func getTasks(c *gin.Context) {
 func getTasksedit(c *gin.Context) {
 
 	// the parameter - id of the question
-	sid := c.Param("tid")
+	tid := c.Param("tid")
 
 	var (
 		id           int64
@@ -87,22 +87,22 @@ func getTasksedit(c *gin.Context) {
 	results := []Tasks{}
 	tRes := Tasks{}
 
-	tRes.Id = int64
-	tRes.TaskName = string
-	tRes.TaskType = string
-	tRes.Weightin = string
-	tRes.TimeWhen = time.Time
-	tRes.Time_Offset = int64
-	tRes.TimeFloat = time.Time
-	tRes.TimeLength = int64
-	tRes.NoOfJobs = int64
-	tRes.TimeMin = string
-	tRes.TimeMax = string
-	tRes.DayOfWeek = string
-	tRes.Active = bool
-	tRes.CompaniesId = int64
-	tRes.StoresId = int64
-	tRes.DeptId = int64
+	tRes.Id = id
+	tRes.TaskName = task_name
+	tRes.TaskType = task_type
+	tRes.Weightin = weighting
+	tRes.TimeWhen = time_when
+	tRes.Time_Offset = time_offset
+	tRes.TimeFloat = time_float
+	tRes.TimeLength = time_length
+	tRes.NoOfJobs = no_of_jobs
+	tRes.TimeMin = time_min
+	tRes.TimeMax = time_max
+	tRes.DayOfWeek = day_of_week
+	tRes.Active = active
+	tRes.CompaniesId = companies_id
+	tRes.StoresId = stores_id
+	tRes.DeptId = dept_id
 
 	results = append(results, tRes)
 

@@ -61,22 +61,22 @@ INSERT INTO tasks (task_name) VALUES ('open store'),
 INSERT INTO tasks (task_name) VALUES ('rewcieve deliveries');
 
 
-id             int64
-task_name       string  
-task_type       string  
-weighting      string   
-time_when         time.Time
-time_offset     int64    
-time_float         time.Time 
-time_length      int64   
-no_of_jobs        int64  
-time_min       string  
-time_max        string 
-day_of_week     string    
-active         bool
-companies_id    int64     
-stores_id      int64   
-dept_id       int64  
+  id             int64
+  task_name       string  
+  task_type       string  
+  weighting      string   
+  time_when         time.Time
+  time_offset     int64    
+  time_float         time.Time 
+  time_length      int64   
+  no_of_jobs        int64  
+  time_min       string  
+  time_max        string 
+  day_of_week     string    
+  active         bool
+  companies_id    int64     
+  stores_id      int64   
+  dept_id       int64  
 
 id,task_name,task_type,weighting,time_when,time_offset,time_float,time_length,no_of_jobs,time_min,time_max,day_of_week,active,companies_id,stores_id,dept_id
 
@@ -85,24 +85,23 @@ id,task_name,task_type,weighting,time_when,time_offset,time_float,time_length,no
 Id, TaskName, TaskType, Weightin, TimeWhen, Time_Offset TimeFloat, TimeLength, NoOfJobs, TimeMin, TimeMax, DayOfWeek, Active, CompaniesId StoresId, DeptId
 
 
-tRes.Id          int64
-tRes.TaskName    string
-tRes.TaskType    string
-tRes.Weightin    string
-tRes.TimeWhen    time.Time
-tRes.Time_Offset int64
-tRes.TimeFloat   time.Time
-tRes.TimeLength  int64
-tRes.NoOfJobs    int64
-tRes.TimeMin     string
-tRes.TimeMax     string
-tRes.DayOfWeek   string
-tRes.Active      bool
-tRes.CompaniesId int64
-tRes.StoresId    int64
-tRes.DeptId      int64
-tRes.UpdatedOn   time.Time
-tRes.CreatedOn   time.Time
+tRes.Id          id
+tRes.TaskName    task_name
+tRes.TaskType    task_type
+tRes.Weightin    weighting
+tRes.TimeWhen    time_when
+tRes.Time_Offset time_offset
+tRes.TimeFloat   time_float
+tRes.TimeLength  time_length
+tRes.NoOfJobs    no_of_jobs
+tRes.TimeMin     time_min
+tRes.TimeMax     time_max
+tRes.DayOfWeek   day_of_week
+tRes.Active      active
+tRes.CompaniesId companies_id
+tRes.StoresId    stores_id
+tRes.DeptId      dept_id
+
 
 
 
