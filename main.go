@@ -75,9 +75,8 @@ func main() {
 
 	//    -    -    -    -    -    -    -    -    -
 	//tasks routing block
-	//    -    -    -    -    -    -    -    -    -
-	// staff routing block
-	router.GET("/staff", getStaff)
+
+	router.GET("/tasks", getTasks)
 
 	router.Run(":" + port)
 }
