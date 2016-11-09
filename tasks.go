@@ -9,10 +9,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var (
-	db *sql.DB
-)
-
 // tasks
 // add log and time back in
 //	-    -    -    -    -    -    -
