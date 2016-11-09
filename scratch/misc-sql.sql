@@ -30,24 +30,26 @@ DROP TABLE IF EXISTS public.templates;
 DROP TABLE IF EXISTS public.requirements;
 DROP TABLE IF EXISTS public.registrations;
 
+DROP TABLE IF EXISTS public.tasks;
 CREATE TABLE IF NOT EXISTS tasks (
 id serial primary key,
-task_name VARCHAR(64) not null,            
-task_type TASKTYPE,            
-weighting WEIGHTING,                         
-time_when TIME,            
-time_offset TIME,           
-time_float BOOLEAN  DEFAULT false,            
-time_length INTERVAL,          
-no_of_jobs INTEGER DEFAULT 1,     
-time_min INTERVAL,              
-time_max INTERVAL,             
-day_of_week DAY_OF_WEEK,            
+task_name VARCHAR(64) not null,
+task_type TASKTYPE DEFAULT 'Volume Related',
+weighting WEIGHTING DEFAULT 'fixed',
+time_when TIME DEFAULT '00:00:00',
+time_offset INTEGER DEFAULT 0,
+time_float BOOLEAN  DEFAULT false,
+time_length INTERVAL DEFAULT '0 4:05:06',
+no_of_jobs INTEGER DEFAULT 1,
+time_min INTERVAL DEFAULT 0,   
+time_max INTERVAL DEFAULT 0,
+day_of_week DAY_OF_WEEK DEFAULT 0,
 active BOOLEAN DEFAULT true, 
-companies_id INTEGER not null,      
-stores_id INTEGER not null,           
-updated_at DATE,        
-created_at DATE
+companies_id INTEGER not null DEFAULT 0,
+stores_id INTEGER not null DEFAULT 0,
+dept_id INTEGER not null DEFAULT 0,
+updated_on timestamp without time zone DEFAULT now(),
+created_on timestamp without time zone DEFAULT now()
 );                    
 COMMENT ON TABLE public.tasks IS 'tasks to be performed';
 

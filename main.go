@@ -78,5 +78,9 @@ func main() {
 
 	router.GET("/tasks", getTasks)
 
+	router.GET("/tasksedit/:tid", getTasksedit)
+
+	//    -    -    -    -    -    -    -    -    -
+
 	router.Run(":" + port)
 }
