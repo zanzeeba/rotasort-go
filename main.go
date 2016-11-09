@@ -75,9 +75,9 @@ func main() {
 
 	//    -    -    -    -    -    -    -    -    -
 	//tasks routing block
-	router.GET("/tasks", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "tasks.tmpl.html", nil)
-	})
+	//    -    -    -    -    -    -    -    -    -
+	// staff routing block
+	router.GET("/staff", getStaff)
 
 	router.Run(":" + port)
 }
