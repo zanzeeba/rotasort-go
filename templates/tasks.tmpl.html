@@ -1,23 +1,78 @@
 <html>
-  {{template "header.tmpl.html"}}
+{{template "header.tmpl.html"}}
+
 <body>
-  {{template "nav.tmpl.html"}}
-
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="/static/lang-logo.png">
-    </a>
-    <h1>Tasks</h1>
-      <p>This is a sample Go application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-  </div>
-</div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-      another container.
-  </div>
-  <hr>
-</div>
-
+    {{template "nav.tmpl.html"}}
+    <div class="jumbotron text-center">
+        <a href="/" class="lang-logo">
+            <img src="/static/images/rotasort.png" />
+        </a>
+        <h1>Tasks and Task Management</h1>
+        <a href="http://www.rotasort.uk/taskscreateform"><img src="static/images/file_add.png" /></a>
+    </div>
+    <div class="container">
+        <table id="qblisting" class="tablesorter">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Task Type</th>
+                    <th>Weighting</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Tasking}}
+                <tr>
+                    <td> {{.TaskName}} </td>
+                    <td> {{<div class="TaskTyp">    </div>e}} </td>
+                    <td> {{.Weighting}} </td>
+                    <td>
+                        <a href="http://www.rotasort.uk/tasksedit/{{.Id}}"><img src="static/images/file_edit.png" /></a>
+                    </td>
+                    <td>
+                        <a href="http://www.rotasort.uk/tasksdelete/{{.Id}}"><img src="static/images/file_delete.png" /></a>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
 </body>
+<script>
+$(document).ready(function() {
+    // call the tablesorter plugin
+    $("table").tablesorter({
+        // sort on the first column and third column, order asc
+        sortList: [
+            [0, 0],
+            [0, 0]
+        ]
+    });
+    $(function() {
+        $("#tablesorter-demo").tablesorter({
+            sortList: [
+                [0, 0],
+                [0, 1]
+            ],
+            widgets: ['zebra']
+        });
+        $("#options").tablesorter({
+            sortList: [
+                [0, 0]
+            ],
+            headers: {
+                3: {
+                    sorter: false
+                },
+                4: {
+                    sorter: false
+                }
+            }
+        });
+    });
+
+});
+</script>
+
 </html>
