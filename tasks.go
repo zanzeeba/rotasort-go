@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 	"net/http"
@@ -82,8 +84,8 @@ func getTasksedit(c *gin.Context) {
 	}
 
 	//defer rows.Close()
-	results := []Tasking{}
-	tRes := Tasking{}
+	results := []Tasks{}
+	tRes := Tasks{}
 
 	tRes.Id = int64
 	tRes.TaskName = string
