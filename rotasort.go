@@ -30,6 +30,27 @@ type Staff struct {
 	UpdatedOn   time.Time
 }
 
+type Tasks struct {
+	Id          int64
+	TaskName    string
+	TaskType    string
+	Weighting   string
+	TimeWhen    time.Time
+	Time_Offset int64
+	TimeFloat   time.Time
+	TimeLength  int64
+	NoOfJobs    int64
+	TimeMin     string
+	TimeMax     string
+	DayOfWeek   string
+	Active      bool
+	CompaniesId int64
+	StoresId    int64
+	DeptId      int64
+	UpdatedOn   time.Time
+	CreatedOn   time.Time
+}
+
 // depoels
 
 var (
