@@ -12,6 +12,10 @@ import (
 	"github.com/russross/blackfriday"
 )
 
+var (
+	db *sql.DB
+)
+
 // tasks
 // add log and time back in
 //	-    -    -    -    -    -    -
