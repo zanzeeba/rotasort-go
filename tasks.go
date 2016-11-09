@@ -90,7 +90,7 @@ func getTasksedit(c *gin.Context) {
 	tRes.Id = id
 	tRes.TaskName = task_name
 	tRes.TaskType = task_type
-	tRes.Weightin = weighting
+	tRes.Weighting = weighting
 	tRes.TimeWhen = time_when
 	tRes.Time_Offset = time_offset
 	tRes.TimeFloat = time_float
