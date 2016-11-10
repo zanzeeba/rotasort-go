@@ -43,10 +43,10 @@ weighting WEIGHTING DEFAULT 'fixed',
 time_when TIME DEFAULT '00:00:00',
 time_offset INTEGER DEFAULT 0,
 time_float BOOLEAN  DEFAULT false,
-time_length INTERVAL DEFAULT '0 4:05:06',
+time_length INTERVAL DEFAULT '0 1:01:01',
 no_of_jobs INTEGER DEFAULT 1,
-time_min INTERVAL DEFAULT 0,   
-time_max INTERVAL DEFAULT 0,
+time_min INTERVAL DEFAULT '0 2:02:02',   
+time_max INTERVAL DEFAULT '0 3:03:03',
 day_of_week DAY_OF_WEEK DEFAULT 0,
 active BOOLEAN DEFAULT true, 
 companies_id INTEGER not null DEFAULT 0,
@@ -54,11 +54,11 @@ stores_id INTEGER not null DEFAULT 0,
 dept_id INTEGER not null DEFAULT 0,
 
 INSERT INTO tasks (task_name) VALUES ('stack shelves'),
-INSERT INTO tasks (task_name) VALUES ('rotate stock'),
-INSERT INTO tasks (task_name) VALUES ('person tills'),
-INSERT INTO tasks (task_name) VALUES ('person self service'),
-INSERT INTO tasks (task_name) VALUES ('open store'),
-INSERT INTO tasks (task_name) VALUES ('rewcieve deliveries');
+('rotate stock'),
+('person tills'),
+('person self service'),
+('open store'),
+('rewcieve deliveries');
 
 
   id             int64
