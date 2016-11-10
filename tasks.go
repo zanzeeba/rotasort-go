@@ -63,7 +63,7 @@ func getTasksedit(c *gin.Context) {
 		weighting    string
 		time_when    time.Time
 		time_offset  int64
-		time_float   time.Time
+		time_float   bool
 		time_length  int64
 		no_of_jobs   int64
 		time_min     string

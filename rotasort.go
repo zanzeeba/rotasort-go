@@ -37,7 +37,7 @@ type Tasks struct {
 	Weighting   string
 	TimeWhen    time.Time
 	Time_Offset int64
-	TimeFloat   time.Time
+	TimeFloat   bool
 	TimeLength  int64
 	NoOfJobs    int64
 	TimeMin     string
