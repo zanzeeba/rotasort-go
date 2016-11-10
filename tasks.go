@@ -75,7 +75,7 @@ func getTasksedit(c *gin.Context) {
 		dept_id      int64
 	)
 
-	err := db.QueryRow("SELECT d,task_name,task_type,weighting,time_when,time_offset,time_float,time_length,no_of_jobs,time_min,time_max,day_of_week,active,companies_id,stores_id,dept_id FROM tasks WHERE id = $1", tid).Scan(&id, &task_name, &task_type, &weighting, &time_when, &time_offset, &time_float, &time_length, &no_of_jobs, &time_min, &time_max, &day_of_week, &active, &companies_id, &stores_id, &dept_id)
+	err := db.QueryRow("SELECT id,task_name,task_type,weighting,time_when,time_offset,time_float,time_length,no_of_jobs,time_min,time_max,day_of_week,active,companies_id,stores_id,dept_id FROM tasks WHERE id = $1", tid).Scan(&id, &task_name, &task_type, &weighting, &time_when, &time_offset, &time_float, &time_length, &no_of_jobs, &time_min, &time_max, &day_of_week, &active, &companies_id, &stores_id, &dept_id)
 
 	if err != nil {
 		c.String(http.StatusInternalServerError,
