@@ -60,6 +60,12 @@ INSERT INTO tasks (task_name) VALUES ('stack shelves'),
 ('open store'),
 ('rewcieve deliveries');
 
+INSERT INTO tasks (task_name) VALUES ('stack shelves'),
+('delete rotate stock'),
+('delete person tills'),
+('delete person self service'),
+('delete open store'),
+('delete rewcieve deliveries');
 
 id := c.PostForm("Id")
 
