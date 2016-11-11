@@ -188,3 +188,38 @@ func getTaskscreateform(c *gin.Context) {
 	c.HTML(http.StatusOK, "taskscreate.tmpl.html", gin.H{})
 
 }
+
+//	-    -    -    -    -    -    -
+// tasks create page code to add data to db
+func postTaskscreate(c *gin.Context) {
+	// code to write to db
+	// get all the post vars
+	email := c.PostForm("Email")
+	username := c.PostForm("Username")
+	password := c.PostForm("Password")
+	phone := c.PostForm("Phone")
+	address := c.PostForm("Address")
+	postcode := c.PostForm("Postcode")
+	firstname := c.PostForm("Firstname")
+	lastname := c.PostForm("Lastname")
+	companies_id := c.PostForm("CompaniesId")
+	stores_id := c.PostForm("StoresId")
+	dept_id := c.PostForm("DeptId")
+
+	stmt, err := db.Prepare("INSERT INTO staff (email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := stmt.Exec(email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "taskscreated.tmpl.html", gin.H{
+		"username": username,
+		"res":      res,
+	})
+
+}
