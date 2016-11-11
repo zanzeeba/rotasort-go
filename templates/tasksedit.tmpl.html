@@ -16,69 +16,69 @@
                 {{range .Tasking}}
                 <div class="autocomplete">
                     Id
-                    <label for="Email" class="col-xs-4 col-form-label">Email</label>
+                    <label for="TaskName" class="col-xs-4 col-form-label">TaskName</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.TaskName}}" name="Email" />
+                        <input class="form-control" type="text" value="{{.TaskName}}" name="TaskName" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Username" class="col-xs-4 col-form-label">Username</label>
+                    <label for="TaskType" class="col-xs-4 col-form-label">TaskType</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.TaskType}}" name="Username" />
+                        <input class="form-control" type="text" value="{{.TaskType}}" name="TaskType" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Password" class="col-xs-4 col-form-label">Password</label>
+                    <label for="Weighting" class="col-xs-4 col-form-label">Weighting</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.Weighting}}" name="Password" />
+                        <input class="form-control" type="text" value="{{.Weighting}}" name="Weighting" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Phone" class="col-xs-4 col-form-label">Phone</label>
+                    <label for="TimeWhen" class="col-xs-4 col-form-label">TimeWhen</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.TimeWhen}}" name="Phone" placeholder="Phone" />
+                        <input class="form-control" type="text" value="{{.TimeWhen}}" name="TimeWhen" placeholder="TimeWhen" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Postcode" class="col-xs-4 col-form-label">Postcode</label>
+                    <label for="Time_Offset" class="col-xs-4 col-form-label">Time_Offset</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.Time_Offset}}" name="Postcode" placeholder="Postcode" />
+                        <input class="form-control" type="text" value="{{.Time_Offset}}" name="Time_Offset" placeholder="Time_Offset" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Firstname" class="col-xs-4 col-form-label">Firstname</label>
+                    <label for="TimeFloat" class="col-xs-4 col-form-label">TimeFloat</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.TimeFloat}}" name="Firstname" placeholder="Firstname" />
+                        <input class="form-control" type="text" value="{{.TimeFloat}}" name="TimeFloat" placeholder="TimeFloat" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Lastname" class="col-xs-4 col-form-label">Lastname</label>
+                    <label for="TimeLength" class="col-xs-4 col-form-label">TimeLength</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.TimeLength}}" name="Lastname" placeholder="Optional answer goes here" />
+                        <input class="form-control" type="text" value="{{.TimeLength}}" name="TimeLength" placeholder="Optional answer goes here" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="CompaniesId" class="col-xs-4 col-form-label">CompaniesId</label>
+                    <label for="NoOfJobs" class="col-xs-4 col-form-label">NoOfJobs</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.NoOfJobs}}" name="CompaniesId" placeholder="User can see this when they have answered, elucidates question" />
+                        <input class="form-control" type="text" value="{{.NoOfJobs}}" name="NoOfJobs" placeholder="User can see this when they have answered, elucidates question" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="StoresId" class="col-xs-4 col-form-label">StoresId</label>
+                    <label for="TimeMin" class="col-xs-4 col-form-label">TimeMin</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="number" value="{{.TimeMin}}" name="StoresId" />
+                        <input class="form-control" type="number" value="{{.TimeMin}}" name="TimeMin" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="DeptId" class="col-xs-4 col-form-label">DeptId</label>
+                    <label for="TimeMax" class="col-xs-4 col-form-label">TimeMax</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="number" value="{{.TimeMax}}" name="DeptId" />
+                        <input class="form-control" type="number" value="{{.TimeMax}}" name="TimeMax" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Siteowner" class="col-xs-4 col-form-label">Siteowner</label>
+                    <label for="DayOfWeek" class="col-xs-4 col-form-label">DayOfWeek</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.DayOfWeek}}" name="Siteowner" />
+                        <input class="form-control" type="text" value="{{.DayOfWeek}}" name="DayOfWeek" />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -88,21 +88,21 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="BreaksId" class="col-xs-4 col-form-label">BreaksId</label>
+                    <label for="CompaniesId" class="col-xs-4 col-form-label">CompaniesId</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="number" value="{{.CompaniesId}}" name="BreaksId" placeholder="In seconds" />
+                        <input class="form-control" type="number" value="{{.CompaniesId}}" name="CompaniesId" placeholder="In seconds" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="BreaksId" class="col-xs-4 col-form-label">BreaksId</label>
+                    <label for="StoresId" class="col-xs-4 col-form-label">StoresId</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="number" value="{{.StoresId}}" name="BreaksId" placeholder="In seconds" />
+                        <input class="form-control" type="number" value="{{.StoresId}}" name="StoresId" placeholder="In seconds" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="BreaksId" class="col-xs-4 col-form-label">BreaksId</label>
+                    <label for="DeptId" class="col-xs-4 col-form-label">DeptId</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="number" value="{{.DeptId}}" name="BreaksId" placeholder="In seconds" />
+                        <input class="form-control" type="number" value="{{.DeptId}}" name="DeptId" placeholder="In seconds" />
                     </div>
                 </div>
                 <div class="form-group row">
