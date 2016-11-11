@@ -38,10 +38,10 @@ type Tasks struct {
 	TimeWhen    time.Time
 	Time_Offset int64
 	TimeFloat   bool
-	TimeLength  time.Time
+	TimeLength  int64
 	NoOfJobs    int64
-	TimeMin     time.Time
-	TimeMax     time.Time
+	TimeMin     int64
+	TimeMax     int64
 	DayOfWeek   string
 	Active      bool
 	CompaniesId int64
