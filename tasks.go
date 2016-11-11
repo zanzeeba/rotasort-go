@@ -194,32 +194,36 @@ func getTaskscreateform(c *gin.Context) {
 func postTaskscreate(c *gin.Context) {
 	// code to write to db
 	// get all the post vars
-	email := c.PostForm("Email")
-	username := c.PostForm("Username")
-	password := c.PostForm("Password")
-	phone := c.PostForm("Phone")
-	address := c.PostForm("Address")
-	postcode := c.PostForm("Postcode")
-	firstname := c.PostForm("Firstname")
-	lastname := c.PostForm("Lastname")
+	task_name := c.PostForm("TaskName")
+	task_type := c.PostForm("TaskType")
+	weighting := c.PostForm("Weighting")
+	time_when := c.PostForm("TimeWhen")
+	time_offset := c.PostForm("Time_Offset")
+	time_float := c.PostForm("TimeFloat")
+	time_length := c.PostForm("TimeLength")
+	no_of_jobs := c.PostForm("NoOfJobs")
+	time_min := c.PostForm("TimeMin")
+	time_max := c.PostForm("TimeMax")
+	day_of_week := c.PostForm("DayOfWeek")
+	active := c.PostForm("Active")
 	companies_id := c.PostForm("CompaniesId")
 	stores_id := c.PostForm("StoresId")
 	dept_id := c.PostForm("DeptId")
 
-	stmt, err := db.Prepare("INSERT INTO staff (email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)")
+	stmt, err := db.Prepare("INSERT INTO tasks (task_name, task_type, weighting, time_when, time_offset, time_float, time_length, no_of_jobs, time_min, time_max, day_of_week, active, companies_id, stores_id, dept_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)")
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := stmt.Exec(email, username, password, phone, address, postcode, firstname, lastname, companies_id, stores_id, dept_id)
+	res, err := stmt.Exec(task_name, task_type, weighting, time_when, time_offset, time_float, time_length, no_of_jobs, time_min, time_max, day_of_week, active, companies_id, stores_id, dept_id)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	c.HTML(http.StatusOK, "taskscreated.tmpl.html", gin.H{
-		"username": username,
-		"res":      res,
+		"task_name": task_name,
+		"res":       res,
 	})
 
 }
