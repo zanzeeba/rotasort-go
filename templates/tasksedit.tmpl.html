@@ -10,12 +10,11 @@
         </a>
         <h1>Staff Management</h1>
         <!-- form -->
-        <form action="http://www.rotasort.uk/staffupdate" method="post" name="staffupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
+        <form action="http://www.rotasort.uk/tasksupdate" method="post" name="tasksupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
             <fieldset>
                 <legend>Edit Task</legend>
                 {{range .Tasking}}
                 <div class="autocomplete">
-                    Id
                     <label for="TaskName" class="col-xs-4 col-form-label">TaskName</label>
                     <div class="col-xs-8">
                         <input class="form-control" type="text" value="{{.TaskName}}" name="TaskName" />

@@ -61,6 +61,8 @@ INSERT INTO tasks (task_name) VALUES ('stack shelves'),
 ('rewcieve deliveries');
 
 
+id := c.PostForm("Id")
+
   id             int64
   task_name       string  
   task_type       string  
@@ -80,27 +82,31 @@ INSERT INTO tasks (task_name) VALUES ('stack shelves'),
 
 id,task_name,task_type,weighting,time_when,time_offset,time_float,time_length,no_of_jobs,time_min,time_max,day_of_week,active,companies_id,stores_id,dept_id
 
+task_name,task_type,weighting,time_when,time_offset,time_float,time_length,no_of_jobs,time_min,time_max,day_of_week,active,companies_id,stores_id,dept_id, id
+
+task_name = $1 ,task_type = $2, weighting = $3, time_when = $4, time_offset = $5, time_float = $6, time_length = $7, no_of_jobs = $8, time_min = $9, time_max = $10, day_of_week = $11, active = $12, companies_id = $13, stores_id = $14, dept_id  = $15
+
 &id ,&task_name ,&task_type ,&weighting ,&time_when ,&time_offset ,&time_float ,&time_length ,&no_of_jobs ,&time_min ,&time_max ,&day_of_week ,&active ,&companies_id ,&stores_id ,&dept_id
 
 Id, TaskName, TaskType, Weightin, TimeWhen, Time_Offset TimeFloat, TimeLength, NoOfJobs, TimeMin, TimeMax, DayOfWeek, Active, CompaniesId StoresId, DeptId
 
 
-tRes.Id          id
-tRes.TaskName    task_name
-tRes.TaskType    task_type
-tRes.Weighting    weighting
-tRes.TimeWhen    time_when
-tRes.Time_Offset time_offset
-tRes.TimeFloat   time_float
-tRes.TimeLength  time_length
-tRes.NoOfJobs    no_of_jobs
-tRes.TimeMin     time_min
-tRes.TimeMax     time_max
-tRes.DayOfWeek   day_of_week
-tRes.Active      active
-tRes.CompaniesId companies_id
-tRes.StoresId    stores_id
-tRes.DeptId      dept_id
+id := c.PostForm("Id")
+task_name := c.PostForm("TaskName")
+task_type := c.PostForm("TaskType")
+weighting := c.PostForm("Weighting")
+time_when := c.PostForm("TimeWhen")
+time_offset := c.PostForm("Time_Offset")
+time_float := c.PostForm("TimeFloat")
+time_length := c.PostForm("TimeLength")
+no_of_jobs := c.PostForm("NoOfJobs")
+time_min := c.PostForm("TimeMin")
+time_max := c.PostForm("TimeMax")
+day_of_week := c.PostForm("DayOfWeek")
+active := c.PostForm("Active")
+companies_id := c.PostForm("CompaniesId")
+stores_id := c.PostForm("StoresId")
+dept_id := c.PostForm("DeptId")
 
 
 

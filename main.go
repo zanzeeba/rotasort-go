@@ -106,6 +106,8 @@ func main() {
 
 	router.GET("/tasksedit/:tid", getTasksedit)
 
+	router.POST("/tasksupdate", postTasksupdate)
+
 	//    -    -    -    -    -    -    -    -    -
 
 	router.Run(":" + port)
