@@ -180,3 +180,11 @@ func getTasksdelete(c *gin.Context) {
 	})
 
 }
+
+//	-    -    -    -    -    -    -
+// tasks create page just the form
+func getTaskscreateform(c *gin.Context) {
+
+	c.HTML(http.StatusOK, "taskscreate.tmpl.html", gin.H{})
+
+}

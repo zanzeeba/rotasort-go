@@ -110,6 +110,10 @@ func main() {
 
 	router.GET("/tasksdelete/:tid", getTasksdelete)
 
+	router.GET("/taskscreateform", getTaskscreateform)
+
+	router.POST("/taskscreate", postTaskscreate)
+
 	//    -    -    -    -    -    -    -    -    -
 
 	router.Run(":" + port)
