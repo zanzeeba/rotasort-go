@@ -167,7 +167,7 @@ func getTasksdelete(c *gin.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := stmt.Exec(sid)
+	res, err := stmt.Exec(tid)
 
 	if err != nil {
 		log.Fatal(err)
