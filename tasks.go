@@ -134,12 +134,8 @@ func postTasksupdate(c *gin.Context) {
 	companies_id := c.PostForm("CompaniesId")
 	stores_id := c.PostForm("StoresId")
 	dept_id := c.PostForm("DeptId")
-	fmt.Println("........................")
-	fmt.Println(task_name)
 
-	stmt, err := db.Prepare("UPDATE staff SET task_name = $1 ,task_type = $2, weighting = $3, time_when = $4, time_offset = $5, time_float = $6, time_length = $7, no_of_jobs = $8, time_min = $9, time_max = $10, day_of_week = $11, active = $12, companies_id = $13, stores_id = $14, dept_id  = $15, updated_on = $16 WHERE id = $17")
-	fmt.Println("........................")
-	fmt.Println(stmt)
+	stmt, err := db.Prepare("UPDATE tasks SET task_name = $1, task_type = $2, weighting = $3, time_when = $4, time_offset = $5, time_float = $6, time_length = $7, no_of_jobs = $8, time_min = $9, time_max = $10, day_of_week = $11, active = $12, companies_id = $13, stores_id = $14, dept_id  = $15, updated_on = $16 WHERE id = $17")
 
 	if err != nil {
 		log.Fatal(err)
