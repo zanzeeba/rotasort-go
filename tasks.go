@@ -154,3 +154,29 @@ func postTasksupdate(c *gin.Context) {
 	})
 
 }
+
+//	-    -    -    -    -    -    -
+// tasks delete page row from db
+func getTasksdelete(c *gin.Context) {
+
+	// the parameter - id of the question
+	tid := c.Param("tid")
+
+	stmt, err := db.Prepare("DELETE FROM tasks WHERE id = $1")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := stmt.Exec(sid)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "tasksdelete.tmpl.html", gin.H{
+		"tasks": "going to delete ",
+		"tid":   tid,
+		"res":   res,
+	})
+
+}
