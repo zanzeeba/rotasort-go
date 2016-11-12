@@ -53,8 +53,8 @@ type Tasks struct {
 
 type Holidays struct {
 	Id           int64
-	HolidayStart date
-	HolidayEnd   date
+	HolidayStart time.Time
+	HolidayEnd   time.Time
 	CompaniesId  int64
 	StoresId     int64
 	DeptId       int64
