@@ -16,8 +16,8 @@ func getHolidays(c *gin.Context) {
 
 	var (
 		id            int64
-		holiday_start date
-		holiday_end   date
+		holiday_start time.Time
+		holiday_end   time.Time
 		companies_id  int64
 		stores_id     int64
 		dept_id       int64
