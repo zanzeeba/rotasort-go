@@ -17,6 +17,7 @@ func getHolidays(c *gin.Context) {
 
 	var (
 		id            int64
+		holiday_name  string
 		holiday_start time.Time
 		holiday_end   time.Time
 		//companies_id  int64
@@ -24,7 +25,7 @@ func getHolidays(c *gin.Context) {
 		//dept_id       int64
 	)
 
-	rows, err := db.Query("SELECT id, holiday_start, holiday_end FROM holidays")
+	rows, err := db.Query("SELECT id, holiday_name, holiday_start, holiday_end FROM holidays")
 	if err != nil {
 		c.String(http.StatusInternalServerError,
 			fmt.Sprintf("Error reading questions: %q", err))
@@ -40,6 +41,7 @@ func getHolidays(c *gin.Context) {
 		rows.Scan(&id, &holiday_start, &holiday_end)
 
 		tRes.Id = id
+		tRes.HolidayName = holiday_name
 		tRes.HolidayStart = holiday_start
 		tRes.HolidayEnd = holiday_end
 		results = append(results, tRes)
