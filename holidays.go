@@ -38,7 +38,6 @@ func getHolidays(c *gin.Context) {
 	for rows.Next() {
 
 		rows.Scan(&id, &holiday_start, &holiday_end)
-		date
 
 		tRes.Id = id
 		tRes.HolidayStart = holiday_start
