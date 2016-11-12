@@ -45,7 +45,7 @@ func getHolidays(c *gin.Context) {
 		results = append(results, tRes)
 	}
 
-	c.HTML(http.StatusOK, "tasks.tmpl.html", gin.H{
+	c.HTML(http.StatusOK, "holidays.tmpl.html", gin.H{
 		"Holidaying": results,
 	})
 }
