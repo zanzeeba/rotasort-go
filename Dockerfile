@@ -1,4 +1,4 @@
-FROM alpine:latest
+aFROM alpine:latest
 
 MAINTAINER Edward Muller <edward@heroku.com>
 

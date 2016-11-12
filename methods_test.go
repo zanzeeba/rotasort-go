@@ -1,0 +1,16 @@
+package main
+
+import (
+	_ "github.com/lib/pq"
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
+
+func TestgetStaff(t *testing.T) {
+
+	assert := assert.New(t)
+
+	var a string = "Hello"
+	var b string = "Hello"
+	assert.Equal(a, b, "The two words should be the same.")
+}
