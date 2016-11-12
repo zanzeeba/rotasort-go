@@ -48,8 +48,8 @@ active BOOLEAN DEFAULT true,
 companies_id INTEGER not null DEFAULT 0,
 stores_id INTEGER not null DEFAULT 0,
 dept_id INTEGER not null DEFAULT 0,
-updated_on timestamp without time zone DEFAULT now(),
-created_on timestamp without time zone DEFAULT now()
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );                    
 COMMENT ON TABLE public.tasks IS 'tasks to be performed';
 
@@ -74,6 +74,21 @@ updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.staff IS 'staff in the store';
 
+
+DROP TABLE IF EXISTS public.skills;
+CREATE TABLE IF NOT EXISTS skills(
+id serial primary key,
+skill VARCHAR(64) not null,
+description TEXT  DEFAULT 'comments',
+companies_id INTEGER not null DEFAULT 1,
+stores_id INTEGER not null DEFAULT 1,
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
+);
+COMMENT ON TABLE public.skills IS 'skills required to do a task';
+
+-- -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   
+-- ok up to here
 -- wrong should be staff to skills 
 -- and a tasks to skills or something better
 
@@ -81,8 +96,8 @@ CREATE TABLE IF NOT EXISTS skills_staff_link(
 id serial primary key,
 staff_id INTEGER not null,
 skills_id INTEGER not null,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.skills_staff_link IS 'the linkage of staff with skills';
 
@@ -90,8 +105,8 @@ CREATE TABLE IF NOT EXISTS skills_task_link(
 id serial primary key,
 task_id INTEGER not null,
 skills_id INTEGER not null,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.skills_task_link IS 'the linkage of tasks with skills';
 
@@ -106,8 +121,8 @@ opc TIME,
 puo TIME,
 puc TIME,
 open BOOLEAN,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.calendars IS 'ability to build a calendar to use in the system';
 
@@ -117,8 +132,8 @@ break_start TIME,
 break_end TIME,
 companies_id INTEGER not null,
 stores_id INTEGER not null,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.break_values IS 'the times allowed for breaks';
 
@@ -131,8 +146,8 @@ postcode VARCHAR(255) not null,
 phone_number VARCHAR(255) not null,
 company_url VARCHAR(255) not null,
 company_notes TEXT,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.companies IS 'company information';
 
@@ -146,8 +161,8 @@ postcode VARCHAR(255) not null,
 phone_number VARCHAR(255) not null,
 stores_url VARCHAR(255) not null,
 stores_notes TEXT,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.stores IS 'store information';
 
@@ -157,8 +172,8 @@ department_name VARCHAR(255) not null,
 companies_id INTEGER not null,
 stores_id INTEGER not null,
 department_notes TEXT,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.departments IS 'department information';
 
@@ -173,23 +188,10 @@ closing_time TIME,
 operating_hours_start TIME,
 operating_hours_end TIME,
 shift_lengths INTERVAL,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.operations IS 'operationg times, opening times etc';
-
-CREATE TABLE IF NOT EXISTS skills(
-id serial primary key,
-skill VARCHAR(64) not null,
-description TEXT,
-companies_id INTEGER not null,
-stores_id INTEGER not null,
-skill_weighting WEIGHTING,
-created_on DATE,
-updated_on DATE
-);
-COMMENT ON TABLE public.skills IS 'skills require to do a task';
-
 
 CREATE TABLE IF NOT EXISTS templates(
 id serial primary key,
@@ -201,8 +203,8 @@ description TEXT,
 day DAY_OF_WEEK,
 inherit_template_id INTEGER,
 date DATE,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.templates IS 'i thingk this was for the more complex shifts model';
 
@@ -223,8 +225,8 @@ percentage_cover INTEGER,
 start_offset INTERVAL,
 end_offset INTERVAL,
 date DATE,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.requirements IS 'not sure what i created this for';
 
@@ -239,8 +241,8 @@ comments TEXT,
 classification  VARCHAR(255) not null,
 subject VARCHAR(255) not null,
 message VARCHAR(255) not null,
-created_on DATE,
-updated_on DATE
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.registrations IS 'not sure what i created this for';
 
