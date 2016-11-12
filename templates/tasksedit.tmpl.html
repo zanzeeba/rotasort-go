@@ -3,12 +3,14 @@
 
 <body>
     {{template "nav.tmpl.html"}}
-    <div class="jumbotron text-center"></div>
+    <div class="jumbotron text-center">
+        <div class="col-xs-2">
+            <a href="/" class="lang-logo"><img src="/static/images/rotasort.png" /></a>
+        </div>
+        <div class="col-xs-8">
+            <h1>Task Management</h1></div>
+    </div>
     <div class="container">
-        <a href="/" class="lang-logo">
-            <img src="/static/images/rotasort.png" />
-        </a>
-        <h1>Staff Management</h1>
         <!-- form -->
         <form action="http://www.rotasort.uk/tasksupdate" method="post" name="tasksupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
             <fieldset>
