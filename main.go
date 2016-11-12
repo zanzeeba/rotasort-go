@@ -116,10 +116,6 @@ func main() {
 	router.POST("/taskscreate", postTaskscreate)
 
 	//    -    -    -    -    -    -    -    -    -
-	//skills routing block
-
-	router.GET("/skills", getSkills)
-	//    -    -    -    -    -    -    -    -    -
 
 	router.Run(":" + port)
 }
