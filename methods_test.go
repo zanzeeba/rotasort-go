@@ -1,12 +1,13 @@
 package main
 
 import (
+	"testing"
+
 	_ "github.com/lib/pq"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
-func TestgetStaff(t *testing.T) {
+func TestGetStaff(t *testing.T) {
 
 	assert := assert.New(t)
 

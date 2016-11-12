@@ -115,6 +115,10 @@ func main() {
 	router.POST("/taskscreate", postTaskscreate)
 
 	//    -    -    -    -    -    -    -    -    -
+	//tasks routing block
+
+	router.GET("/holidays", getHolidays)
+	//    -    -    -    -    -    -    -    -    -
 
 	router.Run(":" + port)
 }

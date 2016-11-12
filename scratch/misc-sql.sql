@@ -75,40 +75,71 @@ updated_on timestamp without time zone DEFAULT now()
 COMMENT ON TABLE public.staff IS 'staff in the store';
 
 
-DROP TABLE IF EXISTS public.skills;
-CREATE TABLE IF NOT EXISTS skills(
+DROP TABLE IF EXISTS public.breaks;
+CREATE TABLE IF NOT EXISTS breaks(
 id serial primary key,
-skill VARCHAR(64) not null,
-description TEXT  DEFAULT 'comments',
-companies_id INTEGER not null DEFAULT 1,
-stores_id INTEGER not null DEFAULT 1,
+break_name VARCHAR(128),
+break_length INTEGER not null DEFAULT 0,
+companies_id INTEGER not null DEFAULT 0,
+stores_id INTEGER not null DEFAULT 0,
+dept_id INTEGER not null DEFAULT 0,
 created_on timestamp without time zone DEFAULT now(),
 updated_on timestamp without time zone DEFAULT now()
 );
-COMMENT ON TABLE public.skills IS 'skills required to do a task';
+COMMENT ON TABLE public.breaks IS 'the times allowed for breaks';
+
+DROP TABLE IF EXISTS public.staff_task_link;
+CREATE TABLE IF NOT EXISTS staff_task_link(
+id serial primary key,
+task_id INTEGER not null,
+staff_id INTEGER not null,
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
+);
+COMMENT ON TABLE public.staff_task_link IS 'the linkage of tasks with staff';
+
+DROP TABLE IF EXISTS public.holidays;
+CREATE TABLE IF NOT EXISTS holidays(
+id serial primary key,
+holiday_name VARCHAR(128),
+holiday_start DATE not null DEFAULT '2016-01-01',
+holiday_end DATE not null DEFAULT '2016-01-01',
+companies_id INTEGER not null DEFAULT 0,
+stores_id INTEGER not null DEFAULT 0,
+dept_id INTEGER not null DEFAULT 0,
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
+);
+COMMENT ON TABLE public.holidays IS 'holiday start and end dates';
+
+
+--DROP TABLE IF EXISTS public.skills;
+--CREATE TABLE IF NOT EXISTS skills(
+--id serial primary key,
+--skill VARCHAR(64) not null,
+--description TEXT  DEFAULT 'comments',
+--companies_id INTEGER not null DEFAULT 1,
+--stores_id INTEGER not null DEFAULT 1,
+--created_on timestamp without time zone DEFAULT now(),
+--updated_on timestamp without time zone DEFAULT now()
+--);
+--COMMENT ON TABLE public.skills IS 'skills required to do a task';
 
 -- -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   
 -- ok up to here
 -- wrong should be staff to skills 
 -- and a tasks to skills or something better
 
-CREATE TABLE IF NOT EXISTS skills_staff_link(
-id serial primary key,
-staff_id INTEGER not null,
-skills_id INTEGER not null,
-created_on timestamp without time zone DEFAULT now(),
-updated_on timestamp without time zone DEFAULT now()
-);
-COMMENT ON TABLE public.skills_staff_link IS 'the linkage of staff with skills';
+--CREATE TABLE IF NOT EXISTS skills_staff_link(
+--id serial primary key,
+--staff_id INTEGER not null,
+--skills_id INTEGER not null,
+--created_on timestamp without time zone DEFAULT now(),
+--updated_on timestamp without time zone DEFAULT now()
+--);
+--COMMENT ON TABLE public.skills_staff_link IS 'the linkage of staff with skills';
 
-CREATE TABLE IF NOT EXISTS skills_task_link(
-id serial primary key,
-task_id INTEGER not null,
-skills_id INTEGER not null,
-created_on timestamp without time zone DEFAULT now(),
-updated_on timestamp without time zone DEFAULT now()
-);
-COMMENT ON TABLE public.skills_task_link IS 'the linkage of tasks with skills';
+
 
 CREATE TABLE IF NOT EXISTS calendars(
 id serial primary key,
@@ -126,16 +157,7 @@ updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.calendars IS 'ability to build a calendar to use in the system';
 
-CREATE TABLE IF NOT EXISTS break_values(
-id serial primary key,
-break_start TIME,
-break_end TIME,
-companies_id INTEGER not null,
-stores_id INTEGER not null,
-created_on timestamp without time zone DEFAULT now(),
-updated_on timestamp without time zone DEFAULT now()
-);
-COMMENT ON TABLE public.break_values IS 'the times allowed for breaks';
+
 
 CREATE TABLE IF NOT EXISTS companies(
 id serial primary key,

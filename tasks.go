@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	_ "github.com/lib/pq"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
 )
 
 // tasks

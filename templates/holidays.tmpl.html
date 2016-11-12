@@ -1,0 +1,77 @@
+<html>
+    {{template "header.tmpl.html"}}
+    <body>
+        {{template "nav.tmpl.html"}}
+        <div class="jumbotron text-center">
+            <a href="/" class="lang-logo">
+                <img src="/static/images/rotasort.png" />
+            </a>
+            <h1>Holidays</h1>
+            <a href="http://www.rotasort.uk/holidaycreateform"><img src="static/images/file_add.png" /></a>
+        </div>
+        <div class="container">
+            <table id="qblisting" class="tablesorter">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .Staffing}}
+                    <tr>
+                        date
+                        
+                        <td> {{.Name}} </td>
+                        <td> {{.HolidayStart}} </td>
+                        <td> {{.HolidayEnd}} </td>
+                        <td>
+                            <a href="http://www.rotasort.uk/holidayedit/{{.Id}}"><img src="static/images/file_edit.png" /></a>
+                        </td>
+                        <td>
+                            <a href="http://www.rotasort.uk/holidaydelete/{{.Id}}"><img src="static/images/file_delete.png" /></a>
+                        </td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script>
+    $(document).ready(function() {
+    // call the tablesorter plugin
+    $("table").tablesorter({
+    // sort on the first column and third column, order asc
+    sortList: [
+    [0, 0],
+    [0, 0]
+    ]
+    });
+    $(function() {
+    $("#tablesorter-demo").tablesorter({
+    sortList: [
+    [0, 0],
+    [0, 1]
+    ],
+    widgets: ['zebra']
+    });
+    $("#options").tablesorter({
+    sortList: [
+    [0, 0]
+    ],
+    headers: {
+    3: {
+    sorter: false
+    },
+    4: {
+    sorter: false
+    }
+    }
+    });
+    });
+    });
+    </script>
+</html>

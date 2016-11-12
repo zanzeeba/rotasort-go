@@ -51,6 +51,17 @@ type Tasks struct {
 	CreatedOn   time.Time
 }
 
+type Holidays struct {
+	Id           int64
+	HolidayStart date
+	HolidayEnd   date
+	CompaniesId  int64
+	StoresId     int64
+	DeptId       int64
+	CreatedOn    timestamp
+	UpdatedOn    timestamp
+}
+
 // depoels
 
 var (
