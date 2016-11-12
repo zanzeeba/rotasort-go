@@ -19,9 +19,9 @@ func getHolidays(c *gin.Context) {
 		id            int64
 		holiday_start time.Time
 		holiday_end   time.Time
-		companies_id  int64
-		stores_id     int64
-		dept_id       int64
+		//companies_id  int64
+		//stores_id     int64
+		//dept_id       int64
 	)
 
 	rows, err := db.Query("SELECT id, holiday_start, holiday_end FROM holidays")
