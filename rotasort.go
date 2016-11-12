@@ -58,8 +58,8 @@ type Holidays struct {
 	CompaniesId  int64
 	StoresId     int64
 	DeptId       int64
-	CreatedOn    timestamp
-	UpdatedOn    timestamp
+	CreatedOn    time.Time
+	UpdatedOn    time.Time
 }
 
 // depoels
