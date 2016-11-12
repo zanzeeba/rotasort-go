@@ -67,6 +67,7 @@ func main() {
 	router := gin.New()
 	router.Use(gin.Logger())
 	router.LoadHTMLGlob("templates/*.tmpl.html")
+	router.LoadHTMLGlob("templates/skills/*.tmpl.html")
 	router.Static("/static", "static")
 
 	router.GET("/", func(c *gin.Context) {
@@ -114,6 +115,10 @@ func main() {
 
 	router.POST("/taskscreate", postTaskscreate)
 
+	//    -    -    -    -    -    -    -    -    -
+	//skills routing block
+
+	router.GET("/skills", getSkills)
 	//    -    -    -    -    -    -    -    -    -
 
 	router.Run(":" + port)
