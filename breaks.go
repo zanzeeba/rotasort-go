@@ -107,7 +107,7 @@ func postBreaksupdate(c *gin.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := stmt.Exec(holiday_name, holiday_start, holiday_end, updated_on, id)
+	res, err := stmt.Exec(holiday_name, holiday_start, updated_on, id)
 
 	if err != nil {
 		log.Fatal(err)
