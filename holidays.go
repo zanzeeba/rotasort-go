@@ -123,26 +123,26 @@ func postHolidaysupdate(c *gin.Context) {
 
 //	-    -    -    -    -    -    -
 // holidays delete page row from db
-//func getHolidaysdelete(c *gin.Context) {
-//
-//	// the parameter - id of the holiday
-//	hid := c.Param("hid")
-//
-//	stmt, err := db.Prepare("DELETE FROM holidays WHERE id = $1")
-//
-//	if err != nil {
-//		log.Fatal(err)
-//	}
-//	res, err := stmt.Exec(hid)
-//
-//	if err != nil {
-//		log.Fatal(err)
-//	}
-//
-//	c.HTML(http.StatusOK, "holidaysdelete.tmpl.html", gin.H{
-//		"holidays": "going to delete ",
-//		"hid":      hid,
-//		"res":      res,
-//	})
-//
-//}
+func getHolidaysdelete(c *gin.Context) {
+
+	// the parameter - id of the holiday
+	hid := c.Param("hid")
+
+	stmt, err := db.Prepare("DELETE FROM holidays WHERE id = $1")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := stmt.Exec(hid)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "holidaysdelete.tmpl.html", gin.H{
+		"holidays": "going to delete ",
+		"hid":      hid,
+		"res":      res,
+	})
+
+}
