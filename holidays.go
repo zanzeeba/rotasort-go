@@ -139,7 +139,7 @@ func getHolidaysdelete(c *gin.Context) {
 		log.Fatal(err)
 	}
 
-	c.HTML(http.StatusOK, "holidayssdelete.tmpl.html", gin.H{
+	c.HTML(http.StatusOK, "holidaysdelete.tmpl.html", gin.H{
 		"holidays": "going to delete ",
 		"hid":      hid,
 		"res":      res,
