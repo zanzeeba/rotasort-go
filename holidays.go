@@ -38,7 +38,7 @@ func getHolidays(c *gin.Context) {
 	tRes := Holidays{}
 	for rows.Next() {
 
-		rows.Scan(&id, &holiday_start, &holiday_end)
+		rows.Scan(&id, &holiday_name, &holiday_start, &holiday_end)
 
 		tRes.Id = id
 		tRes.HolidayName = holiday_name
