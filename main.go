@@ -121,7 +121,7 @@ func main() {
 
 	router.GET("/holidaysedit/:hid", getHolidaysedit)
 
-	//router.POST("/holidaysupdate", postHolidaysupdate)
+	router.POST("/holidaysupdate", postHolidaysupdate)
 
 	//router.GET("/holidaysdelete/:hid", getHolidaysdelete)
 

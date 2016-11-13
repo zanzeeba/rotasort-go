@@ -53,7 +53,7 @@ func getHolidays(c *gin.Context) {
 }
 
 //	-    -    -    -    -    -    -
-// tasks edit page
+// holidays edit page
 func getHolidaysedit(c *gin.Context) {
 
 	// the parameter - id of the question
@@ -89,4 +89,34 @@ func getHolidaysedit(c *gin.Context) {
 	c.HTML(http.StatusOK, "holidaysedit.tmpl.html", gin.H{
 		"Holidaying": results,
 	})
+}
+
+//	-    -    -    -    -    -    -
+// holidays update page
+func postHolidaysupdate(c *gin.Context) {
+
+	// get the current time
+	updated_on := time.Now().Local()
+	// get all the post vars
+	id := c.PostForm("Id")
+	holiday_name := c.PostForm("HolidayName")
+	holiday_start := c.PostForm("HolidayStart")
+	holiday_end := c.PostForm("HolidayEnd")
+
+	stmt, err := db.Prepare("UPDATE holidays SET holiday_name = $1, holiday_start = $2, holiday_end = $3 WHERE id = $4")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := stmt.Exec(holiday_name, holiday_start, holiday_end, id)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "holidaysupdate.tmpl.html", gin.H{
+		"holiday_name": holiday_name,
+		"res":          res,
+	})
+
 }

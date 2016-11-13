@@ -1,0 +1,19 @@
+<html>
+  {{template "header.tmpl.html"}}
+<body>
+    {{template "nav.tmpl.html"}}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <a href="/" class="lang-logo">
+                <img src="/static/images/rotasort.png"/>
+            </a>
+            <h1>Holiday Updated</h1>
+            <p>Holiday was updated, use top menu to carry on</p>
+            <hr/>
+            <p>{{.holiday_name}}</p>
+            <p>{{.res}}</p>
+        </div>
+    </div>
+</body>
+
+</html>
