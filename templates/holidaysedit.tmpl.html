@@ -1,0 +1,55 @@
+<html>
+{{template "header.tmpl.html"}}
+
+<body>
+    {{template "nav.tmpl.html"}}
+    <div class="row">
+        <div class="jumbotron text-center">
+            <div class="col-xs-2">
+                <a href="/" class="lang-logo"><img src="/static/images/rotasort.png" /></a>
+            </div>
+            <div class="col-xs-8">
+                <h1>Holiday Management</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- form -->
+        <form action="http://www.rotasort.uk/tasksupdate" method="post" name="tasksupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
+            <fieldset>
+                <legend>Edit Holiday</legend>
+                {{range .Holidaying}}
+                <div class="autocomplete">
+                    <label for="TaskName" class="col-xs-4 col-form-label">TaskName</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.TaskName}}" name="TaskName" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="TaskType" class="col-xs-4 col-form-label">TaskType</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.TaskType}}" name="TaskType" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Weighting" class="col-xs-4 col-form-label">Weighting</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" value="{{.Weighting}}" name="Weighting" />
+                    </div>
+                </div>
+                 <div class="form-group row">
+                    <div class="col-xs-8">
+                        <input class="form-control" type="hidden" value="{{.Id}}" name="Id" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+        </form>
+        {{end}}
+        </fieldset>
+        <!-- end of form -->
+    </div>
+</body>
+
+</html>

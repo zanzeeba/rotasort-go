@@ -118,6 +118,17 @@ func main() {
 	//tasks routing block
 
 	router.GET("/holidays", getHolidays)
+
+	router.GET("/holidaysedit/:hid", getHolidaysedit)
+
+	//router.POST("/holidaysupdate", postHolidaysupdate)
+
+	//router.GET("/holidaysdelete/:hid", getHolidaysdelete)
+
+	//router.GET("/holidayscreateform", getHolidayscreateform)
+
+	//router.POST("/holidayscreate", postHolidayscreate)
+
 	//    -    -    -    -    -    -    -    -    -
 
 	router.Run(":" + port)

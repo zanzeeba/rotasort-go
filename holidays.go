@@ -51,3 +51,42 @@ func getHolidays(c *gin.Context) {
 		"Holidaying": results,
 	})
 }
+
+//	-    -    -    -    -    -    -
+// tasks edit page
+func getHolidaysedit(c *gin.Context) {
+
+	// the parameter - id of the question
+	hid := c.Param("hid")
+
+	var (
+		id            int64
+		holiday_name  string
+		holiday_start time.Time
+		holiday_end   time.Time
+	)
+
+	err := db.QueryRow("SELECT id, holiday_name, holiday_start, holiday_end FROM holidays WHERE id = $1", hid).Scan(&id, &holiday_name, &holiday_start, &holiday_end)
+
+	if err != nil {
+		c.String(http.StatusInternalServerError,
+			fmt.Sprintf("Error reading questions: %q", err))
+		return
+	}
+
+	//defer rows.Close()
+	results := []Holidays{}
+	tRes := Holidays{}
+
+	tRes.Id = id
+
+	tRes.HolidayName = holiday_name
+	tRes.HolidayStart = holiday_start
+	tRes.HolidayEnd = holiday_end
+
+	results = append(results, tRes)
+
+	c.HTML(http.StatusOK, "holidaysedit.tmpl.html", gin.H{
+		"Holidaying": results,
+	})
+}
