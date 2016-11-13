@@ -42,8 +42,8 @@ func getBreaks(c *gin.Context) {
 		rows.Scan(&id, &holiday_name, &holiday_start, &holiday_end)
 
 		tRes.Id = id
-		tRes.BreakName = holiday_name
-		tRes.BreakLength = holiday_start
+		//tRes.BreakName = holiday_name
+		//tRes.BreakLength = holiday_start
 
 		results = append(results, tRes)
 	}
@@ -81,8 +81,8 @@ func getBreaksedit(c *gin.Context) {
 
 	tRes.Id = id
 
-	tRes.BreakName = holiday_name
-	tRes.BreakLength = holiday_start
+	//tRes.BreakName = holiday_name
+	//tRes.BreakLength = holiday_start
 
 	results = append(results, tRes)
 
