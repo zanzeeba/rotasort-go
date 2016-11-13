@@ -133,7 +133,7 @@ func getHolidaysdelete(c *gin.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := stmt.Exec(tid)
+	res, err := stmt.Exec(hid)
 
 	if err != nil {
 		log.Fatal(err)
