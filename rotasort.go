@@ -63,6 +63,17 @@ type Holidays struct {
 	UpdatedOn    time.Time
 }
 
+type Breaks struct {
+	iId         int64
+	BreakName   string
+	BreakLength int64
+	CompaniesId int64
+	StoresId    int64
+	DeptId      int64
+	CreatedOn   time.Time
+	UpdatedOn   time.Time
+}
+
 // depoels
 
 var (
