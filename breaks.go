@@ -42,9 +42,9 @@ func getBreaks(c *gin.Context) {
 		rows.Scan(&id, &holiday_name, &holiday_start, &holiday_end)
 
 		tRes.Id = id
-		tRes.HolidayName = holiday_name
-		tRes.HolidayStart = holiday_start
-		tRes.HolidayEnd = holiday_end
+		tRes.BreakName = holiday_name
+		tRes.BreakLength = holiday_start
+
 		results = append(results, tRes)
 	}
 
@@ -81,9 +81,8 @@ func getBreaksedit(c *gin.Context) {
 
 	tRes.Id = id
 
-	tRes.HolidayName = holiday_name
-	tRes.HolidayStart = holiday_start
-	tRes.HolidayEnd = holiday_end
+	tRes.BreakName = holiday_name
+	tRes.BreakLength = holiday_start
 
 	results = append(results, tRes)
 
@@ -100,9 +99,8 @@ func postBreaksupdate(c *gin.Context) {
 	updated_on := time.Now().Local()
 	// get all the post vars
 	id := c.PostForm("Id")
-	holiday_name := c.PostForm("HolidayName")
-	holiday_start := c.PostForm("HolidayStart")
-	holiday_end := c.PostForm("HolidayEnd")
+	holiday_name := c.PostForm("BreakName")
+	holiday_start := c.PostForm("BreakLength")
 
 	stmt, err := db.Prepare("UPDATE holidays SET holiday_name = $1, holiday_start = $2, holiday_end = $3, updated_on = $4 WHERE id = $5")
 

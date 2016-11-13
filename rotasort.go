@@ -64,7 +64,7 @@ type Holidays struct {
 }
 
 type Breaks struct {
-	iId         int64
+	Id          int64
 	BreakName   string
 	BreakLength int64
 	CompaniesId int64
