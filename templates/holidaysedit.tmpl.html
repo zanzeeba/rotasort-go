@@ -15,29 +15,29 @@
     </div>
     <div class="container">
         <!-- form -->
-        <form action="http://www.rotasort.uk/tasksupdate" method="post" name="tasksupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
+        <form action="http://www.rotasort.uk/holidaysupdate" method="post" name="holidaysupdate" enctype="application/x-www-form-urlencoded" autocomplete="on">
             <fieldset>
                 <legend>Edit Holiday</legend>
                 {{range .Holidaying}}
                 <div class="autocomplete">
-                    <label for="TaskName" class="col-xs-4 col-form-label">TaskName</label>
+                    <label for="HolidayName" class="col-xs-4 col-form-label">HolidayName</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.TaskName}}" name="TaskName" />
+                        <input class="form-control" type="text" value="{{.HolidayName}}" name="HolidayName" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="TaskType" class="col-xs-4 col-form-label">TaskType</label>
+                    <label for="HolidayStart" class="col-xs-4 col-form-label">HolidayStart</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.TaskType}}" name="TaskType" />
+                        <input class="form-control" type="text" value="{{.HolidayStart}}" name="HolidayStart" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="Weighting" class="col-xs-4 col-form-label">Weighting</label>
+                    <label for="HolidayEnd" class="col-xs-4 col-form-label">HolidayEnd</label>
                     <div class="col-xs-8">
-                        <input class="form-control" type="text" value="{{.Weighting}}" name="Weighting" />
+                        <input class="form-control" type="text" value="{{.HolidayEnd}}" name="HolidayEnd" />
                     </div>
                 </div>
-                 <div class="form-group row">
+                <div class="form-group row">
                     <div class="col-xs-8">
                         <input class="form-control" type="hidden" value="{{.Id}}" name="Id" />
                     </div>
