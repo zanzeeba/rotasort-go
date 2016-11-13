@@ -39,3 +39,4 @@ INSERT INTO staff_task_link (task_id, staff_id) VALUES (1,1),(1,2),(1,3);
 
 -- holidays
 INSERT INTO holidays (holiday_name, holiday_start, holiday_end) VALUES ('one', '2016-12-01', '2016-12-14'),('two', '2016-12-03', '2016-12-17'),('three', '2017-12-01', '2017-12-05');
+INSERT INTO holidays (holiday_name, holiday_start, holiday_end) VALUES ('delete one', '2016-12-01', '2016-12-14'),('delete two', '2016-12-03', '2016-12-17'),('delete three', '2017-12-01', '2017-12-05');
