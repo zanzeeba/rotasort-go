@@ -104,12 +104,12 @@ func postHolidaysupdate(c *gin.Context) {
 	holiday_start := c.PostForm("HolidayStart")
 	holiday_end := c.PostForm("HolidayEnd")
 
-	stmt, err := db.Prepare("UPDATE holidays SET holiday_name = $1, holiday_start = $2, holiday_end = $3 WHERE id = $4")
+	stmt, err := db.Prepare("UPDATE holidays SET holiday_name = $1, holiday_start = $2, holiday_end = $3, updated_on = $4 WHERE id = $5")
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := stmt.Exec(holiday_name, holiday_start, holiday_end, id)
+	res, err := stmt.Exec(holiday_name, holiday_start, holiday_end, updated_on, id)
 
 	if err != nil {
 		log.Fatal(err)
