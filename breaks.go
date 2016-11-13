@@ -10,11 +10,11 @@ import (
 	_ "github.com/lib/pq"
 )
 
-// tasks
+// breaks
 // add log and time back in
 //	-    -    -    -    -    -    -
 // tasks listing page
-func getHolidays(c *gin.Context) {
+func getBreaks(c *gin.Context) {
 
 	var (
 		id            int64
@@ -35,8 +35,8 @@ func getHolidays(c *gin.Context) {
 
 	defer rows.Close()
 
-	results := []Holidays{}
-	tRes := Holidays{}
+	results := []Breaks{}
+	tRes := Breaks{}
 	for rows.Next() {
 
 		rows.Scan(&id, &holiday_name, &holiday_start, &holiday_end)
@@ -55,7 +55,7 @@ func getHolidays(c *gin.Context) {
 
 //	-    -    -    -    -    -    -
 // holidays edit page
-func getHolidaysedit(c *gin.Context) {
+func getBreaksedit(c *gin.Context) {
 
 	// the parameter - id of the question
 	hid := c.Param("hid")
@@ -76,8 +76,8 @@ func getHolidaysedit(c *gin.Context) {
 	}
 
 	//defer rows.Close()
-	results := []Holidays{}
-	tRes := Holidays{}
+	results := []Breaks{}
+	tRes := Breaks{}
 
 	tRes.Id = id
 
@@ -94,7 +94,7 @@ func getHolidaysedit(c *gin.Context) {
 
 //	-    -    -    -    -    -    -
 // holidays update page
-func postHolidaysupdate(c *gin.Context) {
+func postBreaksupdate(c *gin.Context) {
 
 	// get the current time
 	updated_on := time.Now().Local()
@@ -123,7 +123,7 @@ func postHolidaysupdate(c *gin.Context) {
 
 //	-    -    -    -    -    -    -
 // holidays delete page row from db
-func getHolidaysdelete(c *gin.Context) {
+func getBreaksdelete(c *gin.Context) {
 
 	// the parameter - id of the holiday
 	hid := c.Param("hid")
