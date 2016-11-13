@@ -123,7 +123,7 @@ func main() {
 
 	router.POST("/holidaysupdate", postHolidaysupdate)
 
-	router.GET("/holidaysdelete/:hid", getHolidaysdelete)
+	//router.GET("/holidaysdelete/:hid", getHolidaysdelete)
 
 	//router.GET("/holidayscreateform", getHolidayscreateform)
 
