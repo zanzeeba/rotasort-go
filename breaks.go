@@ -57,7 +57,7 @@ func getBreaks(c *gin.Context) {
 func getBreaksedit(c *gin.Context) {
 
 	// the parameter - id of the question
-	hid := c.Param("hid")
+	bid := c.Param("bid")
 
 	var (
 		id          int64
@@ -65,7 +65,7 @@ func getBreaksedit(c *gin.Context) {
 		BreakLength string
 	)
 
-	err := db.QueryRow("SELECT id, break_name, break_length FROM breaks WHERE id = $1")
+	err := db.QueryRow("SELECT id, break_name, break_length FROM breaks WHERE id = $1", $bid).Scan(&id, &break_name, &break_length)
 
 	if err != nil {
 		c.String(http.StatusInternalServerError,
@@ -78,14 +78,13 @@ func getBreaksedit(c *gin.Context) {
 	tRes := Breaks{}
 
 	tRes.Id = id
-
-	//tRes.BreakName = holiday_name
-	//tRes.BreakLength = holiday_start
+	tRes.BreakName = break_name
+	tRes.BreakLength = break_length
 
 	results = append(results, tRes)
 
-	c.HTML(http.StatusOK, "holidaysedit.tmpl.html", gin.H{
-		"Holidaying": results,
+	c.HTML(http.StatusOK, "breaksedit.tmpl.html", gin.H{
+		"Breaking": results,
 	})
 }
 
