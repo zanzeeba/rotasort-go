@@ -65,7 +65,7 @@ func getBreaksedit(c *gin.Context) {
 		BreakLength string
 	)
 
-	err := db.QueryRow("SELECT id, break_name, break_length FROM breaks WHERE id = $1", $bid).Scan(&id, &break_name, &break_length)
+	err := db.QueryRow("SELECT id, break_name, break_length FROM breaks WHERE id = $1", bid).Scan(&id, &break_name, &break_length)
 
 	if err != nil {
 		c.String(http.StatusInternalServerError,
