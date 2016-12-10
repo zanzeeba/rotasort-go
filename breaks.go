@@ -111,8 +111,8 @@ func postBreaksupdate(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "breaksupdate.tmpl.html", gin.H{
-		"breaks_name": breaks_name,
-		"res":         res,
+		"break_name": break_name,
+		"res":        res,
 	})
 }
 
