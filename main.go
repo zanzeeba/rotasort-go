@@ -140,7 +140,7 @@ func main() {
 
 	//router.GET("/breaksdelete/:bid", getBreaksdelete)
 
-	//router.GET("/breakscreateform", getBreakscreateform)
+	router.GET("/breakscreateform", getBreakscreateform)
 
 	//router.POST("/breakscreate", postBreakscreate)
 
