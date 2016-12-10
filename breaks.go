@@ -96,23 +96,23 @@ func postBreaksupdate(c *gin.Context) {
 	updated_on := time.Now().Local()
 	// get all the post vars
 	id := c.PostForm("Id")
-	holiday_name := c.PostForm("BreakName")
-	holiday_start := c.PostForm("BreakLength")
+	break_name := c.PostForm("BreakName")
+	break_length := c.PostForm("BreakLength")
 
-	stmt, err := db.Prepare("UPDATE holidays SET holiday_name = $1, holiday_start = $2, holiday_end = $3, updated_on = $4 WHERE id = $5")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-	res, err := stmt.Exec(holiday_name, holiday_start, updated_on, id)
+	stmt, err := db.Prepare("UPDATE breaks SET break_name = $1, break_length = $2, updated_on = $3 WHERE id = $4")
 
 	if err != nil {
 		log.Fatal(err)
 	}
+	res, err := stmt.Exec(break_name, break_length, updated_on, id)
 
-	c.HTML(http.StatusOK, "holidaysupdate.tmpl.html", gin.H{
-		"holiday_name": holiday_name,
-		"res":          res,
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "breaksupdate.tmpl.html", gin.H{
+		"breaks_name": breaks_name,
+		"res":         res,
 	})
 }
 
