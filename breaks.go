@@ -61,10 +61,9 @@ func getBreaksedit(c *gin.Context) {
 	hid := c.Param("hid")
 
 	var (
-		id            int64
-		holiday_name  string
-		holiday_start time.Time
-		holiday_end   time.Time
+		id          int64
+		BreakName   string
+		BreakLength string
 	)
 
 	err := db.QueryRow("SELECT id, holiday_name, holiday_start, holiday_end FROM holidays WHERE id = $1", hid).Scan(&id, &holiday_name, &holiday_start, &holiday_end)
