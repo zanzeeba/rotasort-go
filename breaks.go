@@ -62,7 +62,7 @@ func getBreaksedit(c *gin.Context) {
 	var (
 		id           int64
 		break_name   string
-		break_length string
+		break_length int64
 	)
 
 	err := db.QueryRow("SELECT id, break_name, break_length FROM breaks WHERE id = $1", bid).Scan(&id, &break_name, &break_length)
