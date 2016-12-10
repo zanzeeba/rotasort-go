@@ -17,19 +17,18 @@ import (
 func getBreaks(c *gin.Context) {
 
 	var (
-		id            int64
-		holiday_name  string
-		holiday_start time.Time
-		holiday_end   time.Time
+		id           int64
+		break_name   string
+		break_length int64
 		//companies_id  int64
 		//stores_id     int64
 		//dept_id       int64
 	)
 
-	rows, err := db.Query("SELECT id, holiday_name, holiday_start, holiday_end FROM holidays")
+	rows, err := db.Query("SELECT id, break_name, break_length FROM breaks")
 	if err != nil {
 		c.String(http.StatusInternalServerError,
-			fmt.Sprintf("Error reading questions: %q", err))
+			fmt.Sprintf("Error reading breaks: %q", err))
 		return
 	}
 
@@ -39,22 +38,22 @@ func getBreaks(c *gin.Context) {
 	tRes := Breaks{}
 	for rows.Next() {
 
-		rows.Scan(&id, &holiday_name, &holiday_start, &holiday_end)
+		rows.Scan(&id, &break_name, &break_length)
 
 		tRes.Id = id
-		//tRes.BreakName = holiday_name
-		//tRes.BreakLength = holiday_start
+		tRes.BreakName = break_name
+		tRes.BreakLength = break_length
 
 		results = append(results, tRes)
 	}
 
-	c.HTML(http.StatusOK, "holidays.tmpl.html", gin.H{
-		"Holidaying": results,
+	c.HTML(http.StatusOK, "breaks.tmpl.html", gin.H{
+		"Breaking": results,
 	})
 }
 
 //	-    -    -    -    -    -    -
-// holidays edit page
+// breaks edit page
 func getBreaksedit(c *gin.Context) {
 
 	// the parameter - id of the question
@@ -66,7 +65,7 @@ func getBreaksedit(c *gin.Context) {
 		BreakLength string
 	)
 
-	err := db.QueryRow("SELECT id, holiday_name, holiday_start, holiday_end FROM holidays WHERE id = $1", hid).Scan(&id, &holiday_name, &holiday_start, &holiday_end)
+	err := db.QueryRow("SELECT id, break_name, break_length FROM breaks WHERE id = $1")
 
 	if err != nil {
 		c.String(http.StatusInternalServerError,
