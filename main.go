@@ -115,7 +115,7 @@ func main() {
 	router.POST("/taskscreate", postTaskscreate)
 
 	//    -    -    -    -    -    -    -    -    -
-	//tasks routing block
+	//holidays routing block
 
 	router.GET("/holidays", getHolidays)
 
@@ -130,6 +130,19 @@ func main() {
 	//router.POST("/holidayscreate", postHolidayscreate)
 
 	//    -    -    -    -    -    -    -    -    -
+	//holidays routing block
+
+	router.GET("/breaks", getBreaks)
+
+	//router.GET("/breaksedit/:hid", getBreaksedit)
+
+	//router.POST("/breaksupdate", postBreaksupdate)
+
+	//router.GET("/breaksdelete/:hid", getBreaksdelete)
+
+	//router.GET("/breakscreateform", getBreakscreateform)
+
+	//router.POST("/breakscreate", postBreakscreate)
 
 	router.Run(":" + port)
 }
