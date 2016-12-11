@@ -89,7 +89,7 @@ func getBreaksedit(c *gin.Context) {
 }
 
 //	-    -    -    -    -    -    -
-// holidays update page
+// breaks update page
 func postBreaksupdate(c *gin.Context) {
 
 	// get the current time
@@ -117,7 +117,7 @@ func postBreaksupdate(c *gin.Context) {
 }
 
 //	-    -    -    -    -    -    -
-// holidays delete page row from db
+// breaks delete page row from db
 func getBreaksdelete(c *gin.Context) {
 
 	// the parameter - id of the holiday
@@ -139,5 +139,12 @@ func getBreaksdelete(c *gin.Context) {
 		"hid":      hid,
 		"res":      res,
 	})
+}
+
+//	-    -    -    -    -    -    -
+// breaks create page just the form
+func getBreakscreateform(c *gin.Context) {
+
+	c.HTML(http.StatusOK, "breakscreate.tmpl.html", gin.H{})
 
 }
