@@ -169,7 +169,7 @@ func postBreakscreate(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "breakscreated.tmpl.html", gin.H{
-		"break_name": task_name,
+		"break_name": break_name,
 		"res":        res,
 	})
 
