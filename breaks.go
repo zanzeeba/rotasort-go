@@ -148,3 +148,29 @@ func getBreakscreateform(c *gin.Context) {
 	c.HTML(http.StatusOK, "breakscreate.tmpl.html", gin.H{})
 
 }
+
+//	-    -    -    -    -    -    -
+// tasks create page code to add data to db
+func postBreakscreate(c *gin.Context) {
+	// code to write to db
+	// get all the post vars
+	break_name := c.PostForm("BreakName")
+	break_length := c.PostForm("BreakLength")
+
+	stmt, err := db.Prepare("INSERT INTO breaks (break_name, break_length) VALUES ($1, $2)")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := stmt.Exec(break_name, break_length)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "breakscreated.tmpl.html", gin.H{
+		"break_name": task_name,
+		"res":        res,
+	})
+
+}

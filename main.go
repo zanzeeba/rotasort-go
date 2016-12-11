@@ -142,7 +142,7 @@ func main() {
 
 	router.GET("/breakscreateform", getBreakscreateform)
 
-	//router.POST("/breakscreate", postBreakscreate)
+	router.POST("/breakscreate", postBreakscreate)
 
 	router.Run(":" + port)
 }
