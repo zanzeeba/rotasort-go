@@ -1,0 +1,20 @@
+<html>
+  {{template "header.tmpl.html"}}
+<body>
+    {{template "nav.tmpl.html"}}
+    <div class="jumbotron text-center">
+        <div class="container">
+            <a href="/" class="lang-logo">
+                <img src="/static/images/rotasort.png"/>
+            </a>
+            <h1>Break Created</h1>
+            <p>Break was created, use top menu to carry on</p>
+            <hr/>
+            <p>This was the break you just created:-</p>
+            <p>{{.breakname}}</p>
+            <hr/>
+        </div>
+    </div>
+</body>
+
+</html>

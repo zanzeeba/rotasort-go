@@ -125,9 +125,9 @@ func main() {
 
 	router.GET("/holidaysdelete/:hid", getHolidaysdelete)
 
-	//router.GET("/holidayscreateform", getHolidayscreateform)
+	router.GET("/holidayscreateform", getHolidayscreateform)
 
-	//router.POST("/holidayscreate", postHolidayscreate)
+	router.POST("/holidayscreate", postHolidayscreate)
 
 	//    -    -    -    -    -    -    -    -    -
 	//breaks routing block

@@ -1,0 +1,44 @@
+<html>
+{{template "header.tmpl.html"}}
+
+<body>
+    {{template "nav.tmpl.html"}}
+    <div class="jumbotron text-center">
+        <a href="/" class="lang-logo">
+            <img src="/static/images/rotasort.png" />
+        </a>
+        <h1>Breaks Create</h1>
+    </div>
+    <div class="container">
+        <!-- form -->
+        <form action="http://www.rotasort.uk/holidayscreate" method="post" name="holidayscreate" enctype="application/x-www-form-urlencoded" autocomplete="on">
+            <fieldset>
+                <legend>Add holiday</legend>
+                 <div class="autocomplete">
+                    <label for="HolidayName" class="col-xs-4 col-form-label">HolidayName</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="HolidayName" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="HolidayStart" class="col-xs-4 col-form-label">HolidayStart</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="HolidayStart" placeholder="dates need to be yyy-mm-dd i.e. 2016-12-01"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="HolidayEnd" class="col-xs-4 col-form-label">HolidayEnd</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" type="text" name="HolidayEnd" placeholder="dates need to be yyy-mm-dd i.e. 2016-12-01" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+        <!-- end of form -->
+    </div>
+</body>
+
+</html>
