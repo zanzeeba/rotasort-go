@@ -138,7 +138,7 @@ func main() {
 
 	router.POST("/breaksupdate", postBreaksupdate)
 
-	//router.GET("/breaksdelete/:bid", getBreaksdelete)
+	router.GET("/breaksdelete/:bid", getBreaksdelete)
 
 	router.GET("/breakscreateform", getBreakscreateform)
 
