@@ -121,23 +121,23 @@ func postBreaksupdate(c *gin.Context) {
 func getBreaksdelete(c *gin.Context) {
 
 	// the parameter - id of the holiday
-	hid := c.Param("hid")
+	hid := c.Param("bid")
 
-	stmt, err := db.Prepare("DELETE FROM holidays WHERE id = $1")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-	res, err := stmt.Exec(hid)
+	stmt, err := db.Prepare("DELETE FROM breaks WHERE id = $1")
 
 	if err != nil {
 		log.Fatal(err)
 	}
+	res, err := stmt.Exec(bid)
 
-	c.HTML(http.StatusOK, "holidaysdelete.tmpl.html", gin.H{
-		"holidays": "going to delete ",
-		"hid":      hid,
-		"res":      res,
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	c.HTML(http.StatusOK, "breaksdelete.tmpl.html", gin.H{
+		"breakname": "going to delete ...... ",
+		"bid":       bid,
+		"res":       res,
 	})
 }
 
@@ -169,8 +169,8 @@ func postBreakscreate(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "breakscreated.tmpl.html", gin.H{
-		"break_name": break_name,
-		"res":        res,
+		"breakname": break_name,
+		"res":       res,
 	})
 
 }
