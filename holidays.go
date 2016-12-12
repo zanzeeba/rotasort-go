@@ -164,7 +164,7 @@ func postHolidayscreate(c *gin.Context) {
 	holiday_start := c.PostForm("HolidayStart")
 	holiday_end := c.PostForm("HolidayEnd")
 
-	stmt, err := db.Prepare("INSERT INTO breaks (holiday_name, holiday_start, holiday_end) VALUES ($1, $2, $3)")
+	stmt, err := db.Prepare("INSERT INTO holidays (holiday_name, holiday_start, holiday_end) VALUES ($1, $2, $3)")
 
 	if err != nil {
 		log.Fatal(err)
@@ -175,7 +175,7 @@ func postHolidayscreate(c *gin.Context) {
 		log.Fatal(err)
 	}
 
-	c.HTML(http.StatusOK, "breakscreated.tmpl.html", gin.H{
+	c.HTML(http.StatusOK, "holidayscreated.tmpl.html", gin.H{
 		"holidayname": holiday_name,
 		"res":         res,
 	})
