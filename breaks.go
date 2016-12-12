@@ -121,7 +121,7 @@ func postBreaksupdate(c *gin.Context) {
 func getBreaksdelete(c *gin.Context) {
 
 	// the parameter - id of the holiday
-	hid := c.Param("bid")
+	bid := c.Param("bid")
 
 	stmt, err := db.Prepare("DELETE FROM breaks WHERE id = $1")
 
