@@ -228,7 +228,7 @@ date DATE,
 created_on timestamp without time zone DEFAULT now(),
 updated_on timestamp without time zone DEFAULT now()
 );
-COMMENT ON TABLE public.templates IS 'i thingk this was for the more complex shifts model';
+COMMENT ON TABLE public.templates IS 'i think this was for the more complex shifts model';
 
 
 CREATE TABLE IF NOT EXISTS requirements(
