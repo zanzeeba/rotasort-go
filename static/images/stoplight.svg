@@ -23,6 +23,19 @@
             <stop stop-color="forestGreen" offset="0.7"/>
             <stop stop-color="darkGreen" offset="1.0"/>
         </radialGradient>
+
+         <linearGradient id="metal" spreadMethod="repeat"
+                        gradientTransform="scale(0.7) rotate(75)">
+            <stop stop-color="#808080" offset="0"/>
+            <stop stop-color="#404040" offset="0.25"/>
+            <stop stop-color="#C0C0C0" offset="0.35"/>
+            <stop stop-color="#808080" offset="0.5"/>
+            <stop stop-color="#E0E0E0" offset="0.7"/>
+            <stop stop-color="#606060" offset="0.75"/>
+            <stop stop-color="#A0A0A0" offset="0.9"/>
+            <stop stop-color="#808080" offset="1"/>
+        </linearGradient> 
+
         <!-- More gradients -->
     </defs>
     <style>
