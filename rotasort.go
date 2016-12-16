@@ -7,7 +7,7 @@ import (
 )
 
 // mine
-
+// structs
 // transfer qb from db to template
 
 type Staff struct {
@@ -70,6 +70,46 @@ type Breaks struct {
 	CompaniesId int64
 	StoresId    int64
 	DeptId      int64
+	CreatedOn   time.Time
+	UpdatedOn   time.Time
+}
+
+type Shifts struct {
+	Id           int64
+	Name         string
+	CompaniesId  int64
+	StoresId     int64
+	MonStartTime time.Time
+	MonEndTime   time.Time
+	TueStartTime time.Time
+	TueEndTime   time.Time
+	WedStartTime time.Time
+	WedEndTime   time.Time
+	ThuStartTime time.Time
+	ThuEndTime   time.Time
+	FriStartTime time.Time
+	FriEndTime   time.Time
+	SatStartTime time.Time
+	SatEndTime   time.Time
+	SunStartTime time.Time
+	SunEndTime   time.Time
+	CreatedOn    time.Time
+	UpdatedOn    time.Time
+}
+
+type ShiftPatterns struct {
+	Id          int64
+	SpName      string
+	UserId      int64
+	SpStartDate time.Time
+	SpEndDate   time.Time
+	Week1       int64
+	Week2       int64
+	Week3       int64
+	Week4       int64
+	CompaniesId int64
+	StoresId    int64
+	RollOver    bool
 	CreatedOn   time.Time
 	UpdatedOn   time.Time
 }

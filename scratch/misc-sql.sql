@@ -268,7 +268,52 @@ updated_on timestamp without time zone DEFAULT now()
 );
 COMMENT ON TABLE public.registrations IS 'not sure what i created this for';
 
+-- ..............shifts................
 
+CREATE TABLE IF NOT EXISTS shifts(
+id serial primary key,
+name VARCHAR(255) not null,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
+mon_start_time TIME default '00:00:00',
+mon_end_time TIME default '00:00:00',
+tue_start_time TIME default '00:00:00',
+tue_end_time TIME default '00:00:00',
+wed_start_time TIME default '00:00:00',
+wed_end_time TIME default '00:00:00',
+thu_start_time TIME default '00:00:00',
+thu_end_time TIME default '00:00:00',
+fri_start_time TIME default '00:00:00',
+fri_end_time TIME default '00:00:00',
+sat_start_time TIME default '00:00:00',
+sat_end_time TIME default '00:00:00',
+sun_start_time TIME default '00:00:00',
+sun_end_time TIME default '00:00:00',
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
+);
+COMMENT ON TABLE public.shifts IS 'basic week times for the shift';
+
+-- ..............shift patterns................
+
+CREATE TABLE IF NOT EXISTS shift_patterns(
+id serial primary key,
+sp_name VARCHAR(255) not null,
+user_id INTEGER not null,
+sp_start_date DATE,
+sp_end_date  DATE,
+week_1 INTEGER,
+week_2 INTEGER,
+week_3 INTEGER,
+week_4 INTEGER,
+companies_id INTEGER not null,
+stores_id INTEGER not null,
+roll_over BOOLEAN default TRUE,
+created_on timestamp without time zone DEFAULT now(),
+updated_on timestamp without time zone DEFAULT now()
+);
+COMMENT ON TABLE public.shifts IS 'basic week times for the shift';
+COMMENT ON COLUMN public.shift_patterns.week_1 IS 'a shift id w1 to w4';
 
 -- ....................................
 DROP TABLE public.rainbow;

@@ -146,5 +146,14 @@ func main() {
 
 	//    -    -    -    -    -    -    -    -    -
 
+	//    -    -    -    -    -    -    -    -    -
+	//shifts routing block
+	// two parts the base shifts i.e. data for a week and shift-patterns which is a set of
+	// shifts put together that can be attached to a staff member and revolve/repeat etc.
+
+	router.GET("/shifts", getShifts)
+
+	router.GET("/shiftpatterns", getShiftPatterns)
+
 	router.Run(":" + port)
 }
