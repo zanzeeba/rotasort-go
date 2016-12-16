@@ -12,6 +12,17 @@
             <stop stop-color="#220000" offset="0.7" />
             <stop stop-color="black" offset="1.0" />
         </radialGradient>
+
+        <radialGradient id="yellow-light-off" fx="0.45" fy="0.4">
+            <stop stop-color="#A06000" offset="0"/>
+            <stop stop-color="#804000" offset="0.7"/>
+            <stop stop-color="#502000" offset="1"/>
+        </radialGradient>
+        <radialGradient id="green-light-on" fx="0.45" fy="0.4">
+            <stop stop-color="#88FF00" offset="0.1"/>
+            <stop stop-color="forestGreen" offset="0.7"/>
+            <stop stop-color="darkGreen" offset="1.0"/>
+        </radialGradient>
         <!-- More gradients -->
     </defs>
     <style>
