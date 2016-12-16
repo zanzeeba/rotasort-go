@@ -34,12 +34,9 @@ func getShifts(c *gin.Context) {
 	results := []Shifts{}
 	tRes := Shifts{}
 	for rows.Next() {
-
 		rows.Scan(&id, &name)
-
 		tRes.Id = id
 		tRes.Name = name
-
 		results = append(results, tRes)
 	}
 
@@ -80,8 +77,6 @@ func getShiftPatterns(c *gin.Context) {
 		tRes.SpStartDate = sp_start_date
 		tRes.SpEndDate = sp_end_date
 		tRes.RollOver = roll_over
-		tRes.BreakName = break_name
-		tRes.BreakLength = break_length
 
 		results = append(results, tRes)
 	}
