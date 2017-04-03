@@ -44,7 +44,7 @@ INSERT INTO holidays (holiday_name, holiday_start, holiday_end) VALUES ('delete 
 
 -- Table: public.shifts
 
--- DROP TABLE public.shifts;
+DROP TABLE public.shifts;
 
 CREATE TABLE public.shifts
 (

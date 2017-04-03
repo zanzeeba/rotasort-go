@@ -28,14 +28,13 @@ package main
 
 import (
 	"database/sql"
+	"github.com/gin-gonic/gin"
+	_ "github.com/lib/pq"
+	"github.com/russross/blackfriday"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
-
-	"github.com/gin-gonic/gin"
-	_ "github.com/lib/pq"
-	"github.com/russross/blackfriday"
 )
 
 var (

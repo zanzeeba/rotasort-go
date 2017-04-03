@@ -29,8 +29,9 @@ DROP TABLE IF EXISTS public.skills;
 DROP TABLE IF EXISTS public.templates;
 DROP TABLE IF EXISTS public.requirements;
 DROP TABLE IF EXISTS public.registrations;
-
+DROP TABLE IF EXISTS public.shifts;
 DROP TABLE IF EXISTS public.tasks;
+
 CREATE TABLE IF NOT EXISTS tasks (
 id serial primary key,
 task_name VARCHAR(64) not null,
@@ -270,29 +271,39 @@ COMMENT ON TABLE public.registrations IS 'not sure what i created this for';
 
 -- ..............shifts................
 
-CREATE TABLE IF NOT EXISTS shifts(
-id serial primary key,
-name VARCHAR(255) not null,
-companies_id INTEGER not null,
-stores_id INTEGER not null,
-mon_start_time TIME default '00:00:00',
-mon_end_time TIME default '00:00:00',
-tue_start_time TIME default '00:00:00',
-tue_end_time TIME default '00:00:00',
-wed_start_time TIME default '00:00:00',
-wed_end_time TIME default '00:00:00',
-thu_start_time TIME default '00:00:00',
-thu_end_time TIME default '00:00:00',
-fri_start_time TIME default '00:00:00',
-fri_end_time TIME default '00:00:00',
-sat_start_time TIME default '00:00:00',
-sat_end_time TIME default '00:00:00',
-sun_start_time TIME default '00:00:00',
-sun_end_time TIME default '00:00:00',
-created_on timestamp without time zone DEFAULT now(),
-updated_on timestamp without time zone DEFAULT now()
-);
-COMMENT ON TABLE public.shifts IS 'basic week times for the shift';
+CREATE TABLE public.shifts
+(
+    id integer NOT NULL DEFAULT nextval('shifts_id_seq'::regclass),
+    name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    companies_id integer NOT NULL,
+    stores_id integer NOT NULL,
+    mon_start_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    mon_end_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    tue_start_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    tue_end_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    wed_start_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    wed_end_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    thu_start_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    thu_end_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    fri_start_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    fri_end_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    sat_start_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    sat_end_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    sun_start_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    sun_end_time time without time zone DEFAULT '00:00:00'::time without time zone,
+    created_on timestamp without time zone DEFAULT now(),
+    updated_on timestamp without time zone DEFAULT now(),
+    CONSTRAINT shifts_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.shifts
+    OWNER to rlnzxnlqoxmncu;
+COMMENT ON TABLE public.shifts
+    IS 'basic week times for the shift';
 
 -- ..............shift patterns................
 
