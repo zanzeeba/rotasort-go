@@ -1,3 +1,16 @@
+# this was originally a go app running on heroku
+
+i have not worked on it for a while but want to convert it to non-heroku and also update it to 
+the latest go and also to add modules.
+
+# secondary
+also i want to upgrade the templating, probably remove it and make the application
+just a set of api's to be served up
+
+# tertiary
+
+left the original readme below for reference.
+
 
 # go-getting-started
 
